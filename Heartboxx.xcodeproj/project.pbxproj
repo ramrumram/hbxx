@@ -7,13 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75521B91CCF3708001A9F9B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D75521BA1CCF370A001A9F9B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */; };
 		D79CF3C71CC8D19C00FA89E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */; };
 		D79CF3CA1CC8D19C00FA89E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3C81CC8D19C00FA89E6 /* Main.storyboard */; };
 		D79CF3CC1CC8D19C00FA89E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3CB1CC8D19C00FA89E6 /* Assets.xcassets */; };
 		D79CF3CF1CC8D19C00FA89E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3CD1CC8D19C00FA89E6 /* LaunchScreen.storyboard */; };
 		D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */; };
+		D7BCC7E91CCDEEED00536CA8 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */; };
+		D7BCC7EA1CCDEEED00536CA8 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (Required, ); }; };
+		D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */; };
+		D7E784D51CC9DA9D00115E09 /* History.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D41CC9DA9D00115E09 /* History.swift */; };
+		D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA7F381CD23D5C00C1E917 /* Common.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		D77D74A11CCB3DE800C3DDD1 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				D75521B91CCF3708001A9F9B /* Alamofire.framework in Embed Frameworks */,
+				D75521BA1CCF370A001A9F9B /* SwiftyJSON.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		D79CF3C11CC8D19C00FA89E6 /* Heartboxx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartboxx.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -24,6 +46,11 @@
 		D79CF3CE1CC8D19C00FA89E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D79CF3D01CC8D19C00FA89E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		D7E784D41CC9DA9D00115E09 /* History.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = History.swift; sourceTree = "<group>"; };
+		D7FA7F381CD23D5C00C1E917 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Heartboxx/Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +58,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7BCC7EA1CCDEEED00536CA8 /* SwiftyJSON.framework in Frameworks */,
+				D7BCC7E91CCDEEED00536CA8 /* Alamofire.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +69,8 @@
 		D79CF3B81CC8D19C00FA89E6 = {
 			isa = PBXGroup;
 			children = (
+				D7BCC7E61CCDEEDE00536CA8 /* Resources */,
+				D7E784D61CC9DB2600115E09 /* Models */,
 				D79CF3C31CC8D19C00FA89E6 /* Heartboxx */,
 				D79CF3C21CC8D19C00FA89E6 /* Products */,
 			);
@@ -70,6 +101,7 @@
 		D79CF3D61CC8D20A00FA89E6 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
 			);
 			name = ViewControllers;
@@ -83,6 +115,24 @@
 			name = Classes;
 			sourceTree = "<group>";
 		};
+		D7BCC7E61CCDEEDE00536CA8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */,
+				D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		D7E784D61CC9DB2600115E09 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D7E784D41CC9DA9D00115E09 /* History.swift */,
+				D7FA7F381CD23D5C00C1E917 /* Common.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -93,6 +143,7 @@
 				D79CF3BD1CC8D19C00FA89E6 /* Sources */,
 				D79CF3BE1CC8D19C00FA89E6 /* Frameworks */,
 				D79CF3BF1CC8D19C00FA89E6 /* Resources */,
+				D77D74A11CCB3DE800C3DDD1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -115,6 +166,12 @@
 				TargetAttributes = {
 					D79CF3C01CC8D19C00FA89E6 = {
 						CreatedOnToolsVersion = 7.2.1;
+						DevelopmentTeam = 9G58H587ZP;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -154,9 +211,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */,
 				D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */,
 				D79CF3C71CC8D19C00FA89E6 /* ViewController.swift in Sources */,
 				D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */,
+				D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */,
+				D7E784D51CC9DA9D00115E09 /* History.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,10 +329,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Heartboxx/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -280,10 +349,19 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = Heartboxx/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -306,6 +384,7 @@
 				D79CF3D51CC8D19C00FA89E6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

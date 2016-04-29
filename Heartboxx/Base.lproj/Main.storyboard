@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1605" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xUp-z9-taW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="xUp-z9-taW">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -74,7 +74,7 @@
                                                     <constraint firstAttribute="height" constant="100" id="iJT-vG-P9V"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -100,7 +100,7 @@ Your Favorite Local Businesess
 Always Private!
 </string>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -136,7 +136,7 @@ Always Private!
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="ILp-oO-JLf"/>
+                        <segue destination="J6R-cK-CIc" kind="relationship" relationship="rootViewController" id="1aF-QU-sBc"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJy-QV-dXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -144,9 +144,28 @@ Always Private!
             <point key="canvasLocation" x="536" y="89"/>
         </scene>
         <!--View Controller-->
+        <scene sceneID="eb7-jU-A8e">
+            <objects>
+                <viewController id="J6R-cK-CIc" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="30e-Pd-eNY"/>
+                        <viewControllerLayoutGuide type="bottom" id="e7L-1H-P3c"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="1hM-ap-qDD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.91034430265426636" green="0.45550793409347534" blue="0.41803973913192749" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="b2I-Pl-9tO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="n3N-3K-LVf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="518" y="767"/>
+        </scene>
+        <!--History Table View Controller-->
         <scene sceneID="4O4-ob-6pV">
             <objects>
-                <viewController id="Mfd-Wm-xfv" sceneMemberID="viewController">
+                <viewController id="Mfd-Wm-xfv" customClass="HistoryTableViewController" customModule="Heartboxx" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ece-NF-I52"/>
                         <viewControllerLayoutGuide type="bottom" id="Ln5-H1-lXS"/>
@@ -168,7 +187,7 @@ Always Private!
                                                     <constraint firstAttribute="height" constant="200" id="vPd-go-9Uc"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
@@ -194,7 +213,7 @@ Always Private!
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QXn-Dm-1vM">
                                                                     <rect key="frame" x="121" y="47" width="207" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbB-kq-Mxm">
@@ -204,14 +223,14 @@ Always Private!
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBk-Gh-gEz">
                                                                     <rect key="frame" x="121" y="18" width="42" height="21"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <connections>
                                                             <outlet property="btnSuggestion" destination="tbB-kq-Mxm" id="25g-1a-d81"/>
-                                                            <outlet property="imgHistory" destination="sae-aQ-7vC" id="xwf-mz-Eua"/>
+                                                            <outlet property="imgHistory" destination="3nn-rs-65B" id="aVj-w6-ol7"/>
                                                             <outlet property="lblCategory" destination="QXn-Dm-1vM" id="KbR-Kd-KUO"/>
                                                             <outlet property="lblShopName" destination="OBk-Gh-gEz" id="raa-d2-SCo"/>
                                                         </connections>
@@ -237,6 +256,9 @@ Always Private!
                             <constraint firstItem="jnb-M5-Zm9" firstAttribute="top" secondItem="ece-NF-I52" secondAttribute="bottom" id="s0m-nS-sqe"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="SQQ-BX-psQ" id="bcF-ah-jlE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="I5F-sH-zLH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -251,8 +273,8 @@ Always Private!
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="iC0-fi-wcU">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" id="iC0-fi-wcU">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iC0-fi-wcU" id="VYm-iT-elV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>

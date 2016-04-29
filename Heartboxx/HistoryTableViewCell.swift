@@ -10,7 +10,8 @@ import UIKit
 
 class HistoryTableViewCell: UITableViewCell {
 
-    @IBOutlet var imgHistory: UIView!
+      
+    @IBOutlet var imgHistory: UIImageView!
     
     @IBOutlet var lblShopName: UILabel!
     
