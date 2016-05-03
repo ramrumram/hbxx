@@ -24,20 +24,20 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func loadSampleMeals() {
-        let photo1 = UIImage(named: "logo")!
+      //  let photo1 = UIImage(named: "logo")!
       //  let meal1 = History(name: "Caprese Salad", photo: photo1, category: "sdrer dfdf dfdfd dfdf..")!
         
-        let photo2 = UIImage(named: "logo")!
+     //   let photo2 = UIImage(named: "logo")!
       //  let meal2 = History(name: "Chicken and Potatoes", photo: photo2, category: "iiiuu dfdf dfdfd dfdf..")!
         
-        let photo3 = UIImage(named: "logo")!
+    //    let photo3 = UIImage(named: "logo")!
      //   let meal3 = History(name: "Pasta with Meatballs", photo: photo3, category: "oooppp dfdf dfdfd dfdf..")!
         
        // meals += [meal1, meal2, meal3]
         
         
-        var history = History()
-        history.getRecent()
+     //   var history = History()
+     //   history.getRecent()
       //  history.
         
         
@@ -64,7 +64,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryTableViewCell
        
         // Fetches the appropriate meal for the data source layout.
-        let meal = meals[indexPath.row]
+     //   let meal = meals[indexPath.row]
         
         cell.lblShopName.text = "meal.name"
        // cell.imgHistory.image = "meal.photo"

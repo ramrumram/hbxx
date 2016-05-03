@@ -53,10 +53,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         case .Authorized:
          //   print(".Authorized")
             locationManager.startMonitoringSignificantLocationChanges()
-  //          locationManager.startUpdatingLocation()
+        //    locationManager.startUpdatingLocation()
   
-          //  self.locationManager.startUpdating()
-            break
+                     break
             
         case .Denied, .Restricted:
             let alertController = UIAlertController(
@@ -99,6 +98,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         
         let location = locations.last! as CLLocation
+       // print ("sdsd")
         
         //print(location.coordinate)
         
