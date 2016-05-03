@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */; };
 		D75521B91CCF3708001A9F9B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D75521BA1CCF370A001A9F9B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
 		D79CF3C11CC8D19C00FA89E6 /* Heartboxx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartboxx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 			isa = PBXGroup;
 			children = (
 				D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */,
+				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
 			);
 			name = ViewControllers;
@@ -217,6 +220,7 @@
 				D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */,
 				D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */,
 				D7E784D51CC9DA9D00115E09 /* History.swift in Sources */,
+				D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

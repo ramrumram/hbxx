@@ -7,23 +7,26 @@
 //
 
 import UIKit
-
+import Alamofire
+import SwiftyJSON
 class HistoryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     
 
     @IBOutlet var tableView: UITableView!
-    var meals = [History]()
+    var visits = [String : AnyObject]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
               // Load the sample data.
-        loadSampleMeals()
+        loadHistory()
     }
     
-    func loadSampleMeals() {
+    func loadHistory() {
+        
+        
       //  let photo1 = UIImage(named: "logo")!
       //  let meal1 = History(name: "Caprese Salad", photo: photo1, category: "sdrer dfdf dfdfd dfdf..")!
         
@@ -36,9 +39,44 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
        // meals += [meal1, meal2, meal3]
         
         
-     //   var history = History()
-     //   history.getRecent()
-      //  history.
+        
+        
+        
+        
+        
+        
+        
+        
+        Alamofire.request(
+            .GET,
+            "http://192.168.0.111/heartboxx/venues/gethistory/27",
+            parameters: ["include_docs": "true"],
+            encoding: .URL)
+            .validate()
+            .responseJSON { (response) -> Void in
+                guard response.result.isSuccess else {
+                    print("Error while fetching remote rooms: \(response.result.error)")
+                    //  completion(nil)
+                    return
+                }
+                //  let res = JSON(response.result.value!)
+                //   rows["data"] =  res["history"]
+                
+                guard let value = response.result.value as? [String: AnyObject] else {
+                    return
+                }
+                
+                self.visits = value
+                self.tableView.reloadData()
+               
+        
+        
+                
+        
+        
+        }
+        
+ 
         
         
     }
@@ -51,11 +89,35 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     // MARK: - Table view data source
     
      func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
+        if((self.visits["history"]) != nil) {
+            return (self.visits["history"]?.count)!
+        }else {
+            return 0
+        }
     }
     
      func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return meals.count
+        if((self.visits["history"]) != nil) {
+           // return (self.visits["history"]?.count)!
+            return self.visits["history"]![section].count;
+        }else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+  //       print ("titiele")
+        
+        if let title = self.visits["history"]![section][0]["visit_date"]! {
+            return title as? String
+            // there is a value and it's currently undraped and is stored in a constant
+        }
+        else {
+            // no value
+            return ""
+        }
+        
     }
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -64,11 +126,13 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryTableViewCell
        
         // Fetches the appropriate meal for the data source layout.
-     //   let meal = meals[indexPath.row]
+        let visit = self.visits["history"]![indexPath.section][indexPath.row]
         
-        cell.lblShopName.text = "meal.name"
-       // cell.imgHistory.image = "meal.photo"
-        cell.lblCategory.text = "meal.category"
+        UIImage(named: "meal3")!
+        
+        cell.lblShopName.text = visit["venue_name"] as? String
+        cell.imgHistory.image = visit["cat_img"] as? String
+        cell.lblCategory.text = visit["category"] as? String
         
         return cell
     }
