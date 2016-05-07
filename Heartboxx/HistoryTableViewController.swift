@@ -9,6 +9,8 @@
 import UIKit
 import Alamofire
 import SwiftyJSON
+import AlamofireImage
+
 class HistoryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     
@@ -128,10 +130,17 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         // Fetches the appropriate meal for the data source layout.
         let visit = self.visits["history"]![indexPath.section][indexPath.row]
         
-        UIImage(named: "meal3")!
+        
         
         cell.lblShopName.text = visit["venue_name"] as? String
-        cell.imgHistory.image = visit["cat_img"] as? String
+        let imgurl =  visit["cat_img"]! as? String
+     //   print(imgurl)
+        let URL = NSURL(string: imgurl!)!
+        let placeholderImage = UIImage(named: "logo")!
+        
+        cell.imgHistory.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+        
+       // cell.imgHistory.image = visit["cat_img"] as? String
         cell.lblCategory.text = visit["category"] as? String
         
         return cell
@@ -139,47 +148,26 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
 
     
     
-    /*
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("reuseIdentifier", forIndexPath: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == .Delete {
-            // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-        } else if editingStyle == .Insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-
-  
-
-    /*
+   
+ 
+    
+    let blogSegueIdentifier = "ShowNewMessage"
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+            if let button = sender as? UIButton {
+            let cell = button.superview?.superview as! UITableViewCell
+            let destination = segue.destinationViewController as? NewMessageController,
+            indexPath = self.tableView.indexPathForCell(cell)!
+           // print(indexPath.section)
+          //  print(indexPath.row)
+            let visit = self.visits["history"]![indexPath.section][indexPath.row]
+          //  print((visit["venue_name"] as? String)!)
+            destination!.venueName = (visit["venue_name"] as? String)!
+          //  print(indexPath.length)
+           
+        }
+        
     }
-    */
-
 }

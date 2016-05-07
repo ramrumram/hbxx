@@ -10,6 +10,9 @@
 		D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */; };
 		D75521B91CCF3708001A9F9B /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D75521BA1CCF370A001A9F9B /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D77321621CD9C26E00E82088 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D77321611CD9C26E00E82088 /* AlamofireImage.framework */; };
+		D77321631CD9C82000E82088 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D77321611CD9C26E00E82088 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D77321651CD9CD7200E82088 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77321641CD9CD7200E82088 /* NewMessageController.swift */; };
 		D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */; };
 		D79CF3C71CC8D19C00FA89E6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */; };
 		D79CF3CA1CC8D19C00FA89E6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3C81CC8D19C00FA89E6 /* Main.storyboard */; };
@@ -32,6 +35,7 @@
 			files = (
 				D75521B91CCF3708001A9F9B /* Alamofire.framework in Embed Frameworks */,
 				D75521BA1CCF370A001A9F9B /* SwiftyJSON.framework in Embed Frameworks */,
+				D77321631CD9C82000E82088 /* AlamofireImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -40,6 +44,8 @@
 
 /* Begin PBXFileReference section */
 		D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SettingsTableViewController.swift; path = ../SettingsTableViewController.swift; sourceTree = "<group>"; };
+		D77321611CD9C26E00E82088 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		D77321641CD9CD7200E82088 /* NewMessageController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
 		D79CF3C11CC8D19C00FA89E6 /* Heartboxx.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Heartboxx.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77321621CD9C26E00E82088 /* AlamofireImage.framework in Frameworks */,
 				D7BCC7EA1CCDEEED00536CA8 /* SwiftyJSON.framework in Frameworks */,
 				D7BCC7E91CCDEEED00536CA8 /* Alamofire.framework in Frameworks */,
 			);
@@ -105,6 +112,7 @@
 			children = (
 				D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */,
 				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
+				D77321641CD9CD7200E82088 /* NewMessageController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
 			);
 			name = ViewControllers;
@@ -121,6 +129,7 @@
 		D7BCC7E61CCDEEDE00536CA8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D77321611CD9C26E00E82088 /* AlamofireImage.framework */,
 				D7BCC7E71CCDEEED00536CA8 /* Alamofire.framework */,
 				D7BCC7E81CCDEEED00536CA8 /* SwiftyJSON.framework */,
 			);
@@ -214,6 +223,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D77321651CD9CD7200E82088 /* NewMessageController.swift in Sources */,
 				D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */,
 				D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */,
 				D79CF3C71CC8D19C00FA89E6 /* ViewController.swift in Sources */,

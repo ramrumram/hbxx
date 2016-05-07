@@ -6,7 +6,7 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Home-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Heartboxx" customModuleProvider="target" sceneMemberID="viewController">
@@ -116,7 +116,7 @@ Always Private!
                             <constraint firstItem="daR-qf-NVx" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="TIm-mE-4xw"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="j3k-8Q-T1h"/>
+                    <navigationItem key="navigationItem" title="Home" id="j3k-8Q-T1h"/>
                     <connections>
                         <outlet property="txtSearch" destination="NWe-aN-7JG" id="vJF-Kf-wHa"/>
                     </connections>
@@ -167,7 +167,11 @@ Always Private!
                             <constraint firstItem="Ms0-AL-g1F" firstAttribute="centerX" secondItem="TAI-op-bte" secondAttribute="centerX" id="cLR-wV-bAB"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Signup" id="Uny-UU-euF"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Signup" id="ePT-WW-dEd">
+                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="hdM-Zh-iyG"/>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5S8-fH-swP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -185,7 +189,7 @@ Always Private!
                             <tableViewSection id="HKf-fb-Rx1">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="FZc-bE-9pS">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="99" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="FZc-bE-9pS" id="RSz-9c-Iin">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -202,7 +206,7 @@ Always Private!
                                         <color key="backgroundColor" red="0.90588235294117647" green="0.90588235294117647" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="84A-qz-edi">
-                                        <rect key="frame" x="0.0" y="79" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="143" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="84A-qz-edi" id="X8R-wS-Xbd">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -217,7 +221,7 @@ Always Private!
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="59X-bU-Qen">
-                                        <rect key="frame" x="0.0" y="123" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="187" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="59X-bU-Qen" id="xEL-cz-ccD">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -232,7 +236,7 @@ Always Private!
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Dlz-bC-G4X">
-                                        <rect key="frame" x="0.0" y="167" width="600" height="44"/>
+                                        <rect key="frame" x="0.0" y="231" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dlz-bC-G4X" id="hTm-W5-jXq">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -276,7 +280,7 @@ Always Private!
                             <tableViewSection id="Axv-vW-4dM">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" id="nkW-r5-7Dt">
-                                        <rect key="frame" x="0.0" y="35" width="600" height="90"/>
+                                        <rect key="frame" x="0.0" y="99" width="600" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" tableViewCell="nkW-r5-7Dt" id="cWC-ZG-uxD">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="89"/>
@@ -304,7 +308,7 @@ Always Private!
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="o85-qw-yih" rowHeight="65" style="IBUITableViewCellStyleDefault" id="Whg-Sl-fjO">
-                                        <rect key="frame" x="0.0" y="125" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="189" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Whg-Sl-fjO" id="qYa-L2-bWa">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="64"/>
@@ -324,7 +328,7 @@ Always Private!
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" textLabel="uK3-tr-NUL" rowHeight="65" style="IBUITableViewCellStyleDefault" id="21R-qg-jHP">
-                                        <rect key="frame" x="0.0" y="190" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="254" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="21R-qg-jHP" id="LA9-O3-3Ap">
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="64"/>
@@ -341,7 +345,7 @@ Always Private!
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="uS9-mS-a0i" rowHeight="65" style="IBUITableViewCellStyleDefault" id="L10-td-YBi">
-                                        <rect key="frame" x="0.0" y="255" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="319" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="L10-td-YBi" id="bqj-Eg-flR">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -358,7 +362,7 @@ Always Private!
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" textLabel="s4l-Cb-Fcf" rowHeight="65" style="IBUITableViewCellStyleDefault" id="oNb-rd-BwU">
-                                        <rect key="frame" x="0.0" y="320" width="600" height="65"/>
+                                        <rect key="frame" x="0.0" y="384" width="600" height="65"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oNb-rd-BwU" id="aFb-oh-j2O">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
@@ -399,12 +403,41 @@ Always Private!
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="IHb-S4-zHD"/>
+                        <segue destination="J6R-cK-CIc" kind="relationship" relationship="rootViewController" id="H7L-rb-9b3"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GJy-QV-dXV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="536" y="89"/>
+        </scene>
+        <!--New Message-->
+        <scene sceneID="GPM-EX-GI2">
+            <objects>
+                <tableViewController id="TrE-HI-MbK" customClass="NewMessageController" customModule="Heartboxx" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="eYN-B7-gKo">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="zEI-e3-yj5">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="zEI-e3-yj5" id="trg-R2-M7X">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="TrE-HI-MbK" id="w7r-3c-n8J"/>
+                            <outlet property="delegate" destination="TrE-HI-MbK" id="WhC-wi-i3r"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="New Message" id="b2y-cw-Mc0"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lAA-aS-rxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1238" y="-547"/>
         </scene>
         <!--Login-->
         <scene sceneID="eb7-jU-A8e">
@@ -742,6 +775,9 @@ Always Private!
                                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tbB-kq-Mxm">
                                                                     <rect key="frame" x="350" y="8" width="65" height="60"/>
                                                                     <state key="normal" title="Button"/>
+                                                                    <connections>
+                                                                        <segue destination="TrE-HI-MbK" kind="show" identifier="ShowNewMessage" id="YAN-J7-2Nk"/>
+                                                                    </connections>
                                                                 </button>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBk-Gh-gEz">
                                                                     <rect key="frame" x="121" y="18" width="42" height="21"/>
@@ -787,7 +823,7 @@ Always Private!
             </objects>
             <point key="canvasLocation" x="1895" y="140"/>
         </scene>
-        <!--Table View Controller-->
+        <!--delet/-->
         <scene sceneID="MAe-RV-F0w">
             <objects>
                 <tableViewController id="CI7-t6-iy7" sceneMemberID="viewController">
@@ -797,7 +833,7 @@ Always Private!
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MealTableViewCell" id="iC0-fi-wcU">
-                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iC0-fi-wcU" id="VYm-iT-elV">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
@@ -810,6 +846,7 @@ Always Private!
                             <outlet property="delegate" destination="CI7-t6-iy7" id="QXd-71-gmL"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="delet/" id="VIg-VD-Jfh"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rjx-q5-mgT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
