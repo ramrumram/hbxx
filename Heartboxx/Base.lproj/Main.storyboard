@@ -583,7 +583,7 @@ Always Private!
         <!--Edit Profile-->
         <scene sceneID="0Jc-ck-ccx">
             <objects>
-                <viewController id="IYr-al-M7e" sceneMemberID="viewController">
+                <viewController id="IYr-al-M7e" customClass="EditProfileController" customModule="Heartboxx" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="9Jw-rK-ioo"/>
                         <viewControllerLayoutGuide type="bottom" id="ia4-tC-4bx"/>

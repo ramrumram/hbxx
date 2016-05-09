@@ -127,8 +127,11 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         let cellIdentifier = "HistoryTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryTableViewCell
        
-        // Fetches the appropriate meal for the data source layout.
-        let visit = self.visits["history"]![indexPath.section][indexPath.row]
+        let temphistory = visits["history"] as! [NSArray]
+        
+
+        //temphistory[0]
+        let visit = temphistory[indexPath.section][indexPath.row]
         
         
         
@@ -160,9 +163,12 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
             let cell = button.superview?.superview as! UITableViewCell
             let destination = segue.destinationViewController as? NewMessageController,
             indexPath = self.tableView.indexPathForCell(cell)!
-           // print(indexPath.section)
-          //  print(indexPath.row)
-            let visit = self.visits["history"]![indexPath.section][indexPath.row]
+                let temphistory = visits["history"] as! [NSArray]
+                
+                
+                //temphistory[0]
+                let visit = temphistory[indexPath.section][indexPath.row]
+                
           //  print((visit["venue_name"] as? String)!)
             destination!.venueName = (visit["venue_name"] as? String)!
           //  print(indexPath.length)

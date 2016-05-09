@@ -10,6 +10,8 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 
+let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
+
 class Common {
     // MARK: Properties
     
