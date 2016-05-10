@@ -31,6 +31,8 @@
 		D79CF3CC1CC8D19C00FA89E6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3CB1CC8D19C00FA89E6 /* Assets.xcassets */; };
 		D79CF3CF1CC8D19C00FA89E6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D79CF3CD1CC8D19C00FA89E6 /* LaunchScreen.storyboard */; };
 		D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */; };
+		D7AA4BD71CE1E004008E83A2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */; };
+		D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */; };
 		D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */; };
 		D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA7F381CD23D5C00C1E917 /* Common.swift */; };
 /* End PBXBuildFile section */
@@ -77,6 +79,8 @@
 		D79CF3CE1CC8D19C00FA89E6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D79CF3D01CC8D19C00FA89E6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
+		D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
+		D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D7FA7F381CD23D5C00C1E917 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Heartboxx/Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,6 +148,7 @@
 			isa = PBXGroup;
 			children = (
 				D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */,
+				D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */,
 				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D77321641CD9CD7200E82088 /* NewMessageController.swift */,
 				D7254CD01CE08A5A004FDB4A /* LoginViewController.swift */,
@@ -157,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */,
+				D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */,
 			);
 			name = Classes;
 			sourceTree = "<group>";
@@ -264,6 +270,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D77321651CD9CD7200E82088 /* NewMessageController.swift in Sources */,
+				D7AA4BD71CE1E004008E83A2 /* SearchViewController.swift in Sources */,
 				D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */,
 				D7254CD91CE17437004FDB4A /* Validator.swift in Sources */,
 				D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */,
@@ -271,6 +278,7 @@
 				D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */,
 				D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */,
 				D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */,
+				D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */,
 				D7254CD11CE08A5A004FDB4A /* LoginViewController.swift in Sources */,
 				D7254CBC1CDE103B004FDB4A /* EditProfileController.swift in Sources */,
 			);
