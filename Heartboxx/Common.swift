@@ -11,6 +11,7 @@ import Alamofire
 import SwiftyJSON
 
 let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
+let API_Domain = "http://192.168.0.111/heartboxx"
 
 class Common {
     // MARK: Properties
@@ -86,4 +87,11 @@ class Common {
         return rows
     }
     
+}
+extension String
+{
+    func trim() -> String
+    {
+        return self.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+    }
 }

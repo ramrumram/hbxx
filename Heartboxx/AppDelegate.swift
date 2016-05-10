@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreLocation
+import KeychainSwift
 
 
 @UIApplicationMain
@@ -21,8 +22,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.delegate = self                // Add this line
-        locationManager.requestAlwaysAuthorization()   // And this one
+        locationManager.delegate = self
+        locationManager.requestAlwaysAuthorization()
+        
+        
+  
+        
+       
+            
         return true
     }
 

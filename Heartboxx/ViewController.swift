@@ -21,6 +21,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        navigationItem.leftBarButtonItem = backButton
         
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
@@ -33,6 +35,12 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
         
         
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+      //  print ("sdds")
+       // self.navigationItem.setHidesBackButton(false, animated:false);
+
     }
 
     
