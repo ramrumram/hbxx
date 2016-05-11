@@ -33,6 +33,7 @@
 		D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */; };
 		D7AA4BD71CE1E004008E83A2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */; };
 		D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */; };
+		D7AA4BDD1CE32CB7008E83A2 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */; };
 		D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */; };
 		D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA7F381CD23D5C00C1E917 /* Common.swift */; };
 /* End PBXBuildFile section */
@@ -81,6 +82,7 @@
 		D79CF3DA1CC93B3200FA89E6 /* HistoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewCell.swift; sourceTree = "<group>"; };
 		D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
+		D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D7FA7F381CD23D5C00C1E917 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Heartboxx/Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -115,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				D7BCC7E61CCDEEDE00536CA8 /* Resources */,
-				D7E784D61CC9DB2600115E09 /* Models */,
+				D7E784D61CC9DB2600115E09 /* Includes */,
 				D79CF3C31CC8D19C00FA89E6 /* Heartboxx */,
 				D79CF3C21CC8D19C00FA89E6 /* Products */,
 			);
@@ -154,6 +156,7 @@
 				D7254CD01CE08A5A004FDB4A /* LoginViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
 				D7254CBB1CDE103B004FDB4A /* EditProfileController.swift */,
+				D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -181,13 +184,13 @@
 			name = Resources;
 			sourceTree = "<group>";
 		};
-		D7E784D61CC9DB2600115E09 /* Models */ = {
+		D7E784D61CC9DB2600115E09 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
 				D7254CD81CE17437004FDB4A /* Validator.swift */,
 				D7FA7F381CD23D5C00C1E917 /* Common.swift */,
 			);
-			name = Models;
+			name = Includes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +272,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7AA4BDD1CE32CB7008E83A2 /* PlaceDetailViewController.swift in Sources */,
 				D77321651CD9CD7200E82088 /* NewMessageController.swift in Sources */,
 				D7AA4BD71CE1E004008E83A2 /* SearchViewController.swift in Sources */,
 				D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */,

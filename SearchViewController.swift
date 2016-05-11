@@ -17,7 +17,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var tableView: UITableView!
     //var visits = [String : AnyObject]()
     var places = Dictionary<Int, NSMutableArray>()
-    
+    let blogSegueIdentifier = "ShowPlaceSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,45 +35,32 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         locationManager.delegate = self
         
         locationManager.requestAlwaysAuthorization()
+        btnSearchVenue(txtSearch)
         
         
-        
-       // txtSearch.layer.borderWidth = 1
-       // txtSearch.layer.borderColor = UIColor.blackColor().CGColor
-        
-        let imageView = UIImageView();
-        let image = UIImage(named: "logo.png");
-        imageView.image = image;
-        imageView.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        view.addSubview(imageView)
-        
-        txtSearch.leftView = imageView;
-        txtSearch.leftViewMode = UITextFieldViewMode.Always
-        
+        tableView.tableFooterView = UIView()
         
         // Load the sample data.
-       // loadHistory()
+        // loadHistory()
     }
     
     
     
     @IBAction func btnSearchVenue(sender: AnyObject) {
         
-        //print ("hii")
-        let q =  (txtSearch.text)!
+        var q =  (txtSearch.text)!
+        
         if(q.characters.count > 2) {
-            stackTemp.hidden=true
-            stackTable.hidden=false
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            q = q.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
+           
             
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
             let v = dateFormatter.stringFromDate(NSDate())
             
             let ll = "8.720277777777778,77.65583333333333"
-            let url =  "https://api.foursquare.com//v2/venues/search?ll="+ll+"&query="+q+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=5&v="+v
-            
-            
-            
+            let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&query="+q+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
             
             
             Alamofire.request(
@@ -83,6 +70,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 encoding: .URL)
                 .validate()
                 .responseJSON { (response) -> Void in
+                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                     guard response.result.isSuccess else {
                         print("Error while fetching remote rooms: \(response.result.error)")
                         //  completion(nil)
@@ -92,49 +80,49 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     let venues = res["response"]["venues"]
                     
                     
-                    var i = 0
-                    while i < venues.count {
-                        var tname = ""
-                        var tcatname = ""
-                        if let name = venues[i]["name"].string{
-                            tname = name
+                    if venues.count > 0 {
+                        self.stackTemp.hidden=true
+                        self.stackTable.hidden=false
+                        var i = 0
+                        while i < venues.count {
+                            
+                            var tname = ""
+                            var tcatname = ""
+                            var tvenueid = ""
+                            var timage = ""
+                            if let name = venues[i]["name"].string{
+                                tname = name
+                            }
+                          //  print (venues[i]["location"]["formattedAddress"].)
+                            if let catname = venues[i]["location"]["formattedAddress"].array {
+                              //  print(catname.description)
+                                tcatname = catname.description
+                            }
+                            if let vid = venues[i]["id"].string{
+                                tvenueid = vid
+                            }
+                            
+                            if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, sf = venues[i]["categories"][0]["icon"]["suffix"].string {
+                                timage = pf + "bg_32" + sf
+                            }
+                            
+                            
+                            
+                            self.places [i] = [tname, tcatname, timage]
+                            
+                            i = i+1
+                            
                         }
-                        if let catname = venues[i]["categories"][0]["shortName"].string {
-                            tcatname = catname
-                        }
-                        self.places [i] = [tname, tcatname]
+                        self.tableView.reloadData()
                         
-                        https://api.foursquare.com/v2/venues/
-                        
-                        i = i+1
+                    }else {
+                        self.lblTemp.text = "Sorry! No records found"
+                        //no venu found
+                        self.stackTemp.hidden=false
+                        self.stackTable.hidden=true
                     }
                     
-                    
-                    self.tableView.reloadData()
-                    
-                   // print (places)
-                    //  if let venues = res["response"].string {
-                    //       print(venues)
-                    //
-                    //  }
-                    
-                    
-                    //   rows["data"] =  res["history"]
-                    
-                    /*  guard let value = response.result.value as? [String: AnyObject] else {
-                     return
-                     }
-                     
-                     
-                     */
-                    
-                    
-                    
-                    
-                    
-                    
             }
-            
             
             
         } else {
@@ -143,79 +131,78 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         }
         
         
-
+        
     }
     
-
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
     
   
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-            return self.places.count;
-       
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
     }
     
- 
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return self.places.count;
+        
+    }
     
+    
+ 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "SearchTableViewCell"
         let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
         
-        
-        
         //temphistory[0]
         let visit = self.places[indexPath.row]!
-        
-        
-        
-        cell.lblShopName.text = visit[0] as? String
+        var shopstr = (visit[0] as? String)! + (visit[1] as! String)
+        shopstr = shopstr.trunc(30)
+        cell.lblShopName.text = shopstr
         let imgurl =  visit[2] as? String
         //   print(imgurl)
         let URL = NSURL(string: imgurl!)!
-        let placeholderImage = UIImage(named: "logo")!
+        let placeholderImage = UIImage(named: "badge")!
         
         cell.imgHistory.af_setImageWithURL(URL, placeholderImage: placeholderImage)
         
-        // cell.imgHistory.image = visit["cat_img"] as? String
-        cell.lblCategory.text = visit[1] as? String
+        
         
         return cell
     }
     
+  
     
     
-    
-    
-    
-    let blogSegueIdentifier = "ShowNewMessage"
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        if let button = sender as? UIButton {
-            let cell = button.superview?.superview as! UITableViewCell
-            let destination = segue.destinationViewController as? NewMessageController,
-            indexPath = self.tableView.indexPathForCell(cell)!
-            let temphistory = visits["history"] as! [NSArray]
+       if  segue.identifier == blogSegueIdentifier{
+            let destination = segue.destinationViewController as? PlaceDetailViewController,
+            indexPath = self.tableView.indexPathForSelectedRow?.row
+            let temphistory = self.places
             
             
             //temphistory[0]
-            let visit = temphistory[indexPath.section][indexPath.row]
+            let visit = temphistory[indexPath!]
             
             //  print((visit["venue_name"] as? String)!)
-            destination!.venueName = (visit["venue_name"] as? String)!
+            destination!.venueName = visit! 
             //  print(indexPath.length)
             
         }
         
     }
+    
+   
+    
+
     
     
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {

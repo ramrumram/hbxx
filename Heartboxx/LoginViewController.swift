@@ -62,7 +62,8 @@ class LoginViewController: UIViewController {
                 .responseJSON { (response) -> Void in
                     SwiftSpinner.hide()
                     guard response.result.isSuccess else {
-                        print("Error connecting remote: \(response.result.error)")
+                        self.lblError.text = "Invalid credentials"
+                   //     print("Error connecting remote: \(response.result.error)")
                         //  completion(nil)
                         return
                     }

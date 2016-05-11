@@ -17,9 +17,7 @@ class SearchTableViewCell: UITableViewCell {
     
     @IBOutlet var lblShopName: UILabel!
     
-    @IBOutlet var lblCategory: UILabel!
     
-    @IBOutlet var btnSuggestion: UIButton!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
