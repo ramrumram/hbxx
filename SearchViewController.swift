@@ -56,22 +56,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
                 CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways)
             {
-                let la  : String! = "\(locationManager.location?.coordinate.latitude)"
-                let long : String! = "\(locationManager.location?.coordinate.longitude)"
+                let numlat = NSNumber(double: (locationManager.location?.coordinate.latitude)! as Double)
+                let la:String = numlat.stringValue
+                let numlo = NSNumber(double: (locationManager.location?.coordinate.longitude)! as Double)
+                let lo:String = numlo.stringValue
                 
-                if let temp = la+","+long as String {
-                    ll = temp
-                }
-                
-                print (ll)
+                 ll = la+","+lo
                 
             } else {
                 promptAccess()
                 return
-                //locationManager.requestAlwaysAuthorization()
             }
             
-          //  print ("will not come here")
             
             
             
@@ -138,12 +134,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                         
                             }
                           
-                          //  print (venues[i]["location"]["formattedAddress"].)
-                          /*  if let address = venues[i]["location"]["address"].string,crossStreet = venues[i]["location"]["crossStreet"].string,city = venues[i]["location"]["city"].string,state = venues[i]["location"]["state"].string,postalCode = venues[i]["location"]["postalCode"].string,cc = venues[i]["location"]["cc"].string {
-                                
-                                tcatname = [address,crossStreet,city,state,postalCode,cc]
-                            }*/
-                            if let vid = venues[i]["id"].string{
+                           if let vid = venues[i]["id"].string{
                                 tvenueid = vid
                             }
                             
@@ -291,10 +282,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         let location = locations.last! as CLLocation
-        // print ("sdsd")
-        
-        //print(location.coordinate)
-        
+              
         
         let tmp = String(location.coordinate)
         

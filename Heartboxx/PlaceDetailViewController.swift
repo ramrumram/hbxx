@@ -83,8 +83,7 @@ class PlaceDetailViewController: UIViewController {
                         let imgurl =  timage
                         //   print(imgurl)
                         let URL = NSURL(string: imgurl)!
-                        let placeholderImage = UIImage(named: "badge")!
-                        self.imgPlace.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+                        self.imgPlace.af_setImageWithURL(URL)
                     }
                     
                     
