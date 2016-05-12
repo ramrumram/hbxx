@@ -10,11 +10,11 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import AlamofireImage
-
+import KeychainSwift
 class HistoryTableViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     
-
+    let keychain = KeychainSwift()
     @IBOutlet var tableView: UITableView!
     var visits = [String : AnyObject]()
     
@@ -27,32 +27,13 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     func loadHistory() {
-        
-        
-      //  let photo1 = UIImage(named: "logo")!
-      //  let meal1 = History(name: "Caprese Salad", photo: photo1, category: "sdrer dfdf dfdfd dfdf..")!
-        
-     //   let photo2 = UIImage(named: "logo")!
-      //  let meal2 = History(name: "Chicken and Potatoes", photo: photo2, category: "iiiuu dfdf dfdfd dfdf..")!
-        
-    //    let photo3 = UIImage(named: "logo")!
-     //   let meal3 = History(name: "Pasta with Meatballs", photo: photo3, category: "oooppp dfdf dfdfd dfdf..")!
-        
-       // meals += [meal1, meal2, meal3]
-        
-        
-        
-        
-        
-        
-        
-        
+              
+         let uid = keychain.get("HB_uid")!
         
         
         Alamofire.request(
             .GET,
-            "http://192.168.0.111/heartboxx/venues/gethistory/27",
-            parameters: ["include_docs": "true"],
+            API_Domain + "/api/venues/gethistory/"+uid,
             encoding: .URL)
             .validate()
             .responseJSON { (response) -> Void in
@@ -70,8 +51,6 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
                 
                 self.visits = value
                 self.tableView.reloadData()
-               
-        
         
                 
         
@@ -106,7 +85,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
             return 0
         }
     }
-    
+    /*
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         
   //       print ("titiele")
@@ -120,7 +99,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
             return ""
         }
         
-    }
+    }*/
     
      func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
@@ -171,9 +150,41 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
                 
           //  print((visit["venue_name"] as? String)!)
             destination!.venueName = (visit["venue_name"] as? String)!
+            destination!.address = "---"
+
           //  print(indexPath.length)
            
         }
+        
+    }
+    
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return CGFloat(27);
+    }
+    
+ 
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        var title = ""
+        if let temp = self.visits["history"]![section][0]["visit_date"]! {
+             title = temp as! String
+            // there is a value and it's currently undraped and is stored in a constant
+        }
+        
+        let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 18))
+        let label = UILabel(frame: CGRectMake(10, 5, tableView.frame.size.width, 18))
+        label.font = UIFont.systemFontOfSize(14)
+        label.text = title
+        label.textColor = UIColor.whiteColor()
+        view.addSubview(label)
+        view.backgroundColor = UIColor(red: 255/255, green: 198/255, blue: 186/255, alpha: 1)
+        
+        
+      //  let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 18))
+      //  view.backgroundColor = UIColor(red: 255/255, green: 101/255, blue: 99/255, alpha: 1)
+        return view
         
     }
 }

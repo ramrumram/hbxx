@@ -12,6 +12,7 @@ import Alamofire
 
 class EditProfileController: UIViewController,ImagePickerDelegate {
 
+    
     override func viewDidLoad() {
         
         let imagePickerController = ImagePickerController()

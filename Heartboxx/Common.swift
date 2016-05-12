@@ -40,7 +40,7 @@ class Common {
         var rows = ""
         Alamofire.request(
             .POST,
-            "http://192.168.0.111/heartboxx/log",
+            API_Domain + "/api/log",
             parameters: ["description": description],
             encoding: .URL)
             .validate()

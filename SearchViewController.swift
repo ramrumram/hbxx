@@ -4,7 +4,7 @@ import SwiftyJSON
 import AlamofireImage
 import CoreLocation
 
-class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate,CLLocationManagerDelegate  {
+class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
     @IBOutlet var stackTemp: UIStackView!
     @IBOutlet var imgTemp: UIImageView!
@@ -31,17 +31,13 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
         
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.delegate = self
         
-        locationManager.requestAlwaysAuthorization()
-        btnSearchVenue(txtSearch)
+       // btnSearchVenue(txtSearch)
         
         
         tableView.tableFooterView = UIView()
         
-        // Load the sample data.
-        // loadHistory()
+      
     }
     
     
@@ -70,8 +66,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             
             
             
-            
-            
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             q = q.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
            
@@ -79,13 +73,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             let dateFormatter = NSDateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
             let v = dateFormatter.stringFromDate(NSDate())
-            
-            
-            
-            
-            
-            
-            
            
             
             let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&query="+q+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
@@ -242,56 +229,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
     
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        switch status {
-        case .NotDetermined:
-            //       print(".NotDetermined")
-            locationManager.requestAlwaysAuthorization()
-            break
-            
-        case .Authorized:
-            //   print(".Authorized")
-            locationManager.startMonitoringSignificantLocationChanges()
-            //    locationManager.startUpdatingLocation()
-            
-            break
-            
-        case .Denied, .Restricted:
-           
-            promptAccess()
-            break
-            
-        default:
-            print("Unhandled authorization status")
-            break
-            
-        }
-        // mapView.showsUserLocation = (status == .AuthorizedAlways)
-    }
-    
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
-        print("Monitoring failed for region with identifier: \(region!.identifier)")
-    }
-    
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
-        print("Location Manager failed with the following error: \(error)")
-    }
-    
-    
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
-        let location = locations.last! as CLLocation
-              
-        
-        let tmp = String(location.coordinate)
-        
-        let common = Common();
-        common.postLog(tmp)
-        
-        
-        
-    }
+ 
     
     func promptAccess() {
         let alertController = UIAlertController(

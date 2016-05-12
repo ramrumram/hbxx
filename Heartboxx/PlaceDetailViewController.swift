@@ -34,7 +34,7 @@ class PlaceDetailViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         //print (venueName)
         //   blogNameLabel.text = blogName
-       var vid = venueName[3] as! String
+       let vid = venueName[3] as! String
        let dateFormatter = NSDateFormatter()
        dateFormatter.dateFormat = "yyyyMMdd"
        let v = dateFormatter.stringFromDate(NSDate())

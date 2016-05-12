@@ -14,6 +14,8 @@
 	<string>1</string>
 	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Heartboxx requires access to your phone&apos;s location</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Heartboxx requires access to your phone&apos;s location</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>LSRequiresIPhoneOS</key>
