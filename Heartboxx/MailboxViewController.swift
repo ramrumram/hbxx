@@ -12,7 +12,6 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.hideKeyboardWhenTappedAround()
         
         
         tableView.delegate = self
@@ -139,16 +138,19 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
         if  segue.identifier == blogSegueIdentifier{
-            let destination = segue.destinationViewController as? PlaceDetailViewController,
+            let destination = segue.destinationViewController as? MailboxDetailViewController,
             indexPath = self.tableView.indexPathForSelectedRow?.row
-            let temphistory = self.messages
+            
+            let message = self.messages[indexPath!]
+            
+            destination?.to =  (message![2] as? String)!
+             destination?.subject =  (message![0] as? String)!
+             destination?.body =  (message![1] as? String)!
+             destination?.date =  (message![3] as? String)!
             
             
-            //temphistory[0]
-            let visit = temphistory[indexPath!]
             
             //  print((visit["venue_name"] as? String)!)
-            destination!.venueName = visit!
             //  print(indexPath.length)
             
         }

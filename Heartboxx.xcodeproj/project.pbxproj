@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D722B2AF1CE4B8B50091B700 /* MailboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2AE1CE4B8B50091B700 /* MailboxTableViewCell.swift */; };
 		D722B2B11CE4BA330091B700 /* MailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2B01CE4BA330091B700 /* MailboxViewController.swift */; };
+		D722B2B51CE4D3150091B700 /* MailboxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2B41CE4D3150091B700 /* MailboxDetailViewController.swift */; };
 		D7254CBA1CDE0FCB004FDB4A /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CB91CDE0FCB004FDB4A /* ImagePicker.framework */; };
 		D7254CBC1CDE103B004FDB4A /* EditProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7254CBB1CDE103B004FDB4A /* EditProfileController.swift */; };
 		D7254CBD1CDE12FF004FDB4A /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CB91CDE0FCB004FDB4A /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -62,6 +63,7 @@
 /* Begin PBXFileReference section */
 		D722B2AE1CE4B8B50091B700 /* MailboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxTableViewCell.swift; sourceTree = "<group>"; };
 		D722B2B01CE4BA330091B700 /* MailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxViewController.swift; sourceTree = "<group>"; };
+		D722B2B41CE4D3150091B700 /* MailboxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxDetailViewController.swift; sourceTree = "<group>"; };
 		D7254CB91CDE0FCB004FDB4A /* ImagePicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImagePicker.framework; path = Carthage/Build/iOS/ImagePicker.framework; sourceTree = "<group>"; };
 		D7254CBB1CDE103B004FDB4A /* EditProfileController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileController.swift; sourceTree = "<group>"; };
 		D7254CC01CDE2FDE004FDB4A /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */,
+				D722B2B41CE4D3150091B700 /* MailboxDetailViewController.swift */,
 				D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */,
 				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D77321641CD9CD7200E82088 /* NewMessageController.swift */,
@@ -292,6 +295,7 @@
 				D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */,
 				D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */,
 				D7254CD11CE08A5A004FDB4A /* LoginViewController.swift in Sources */,
+				D722B2B51CE4D3150091B700 /* MailboxDetailViewController.swift in Sources */,
 				D7254CBC1CDE103B004FDB4A /* EditProfileController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
