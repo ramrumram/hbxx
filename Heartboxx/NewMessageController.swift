@@ -11,8 +11,10 @@ import UIKit
 class NewMessageController: UITableViewController {
 
     var venueName =  String()
+    var address = String()
     override func viewWillAppear(animated: Bool) {
         print (venueName)
+        print (address)
      //   blogNameLabel.text = blogName
     }
 }

@@ -123,3 +123,9 @@ extension UIViewController {
         view.endEditing(true)
     }
 }
+
+extension SequenceType {
+    var minimalDescrption: String {
+        return map { String($0) }.joinWithSeparator(",")
+    }
+}

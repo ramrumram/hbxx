@@ -51,6 +51,31 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         var q =  (txtSearch.text)!
         
         if(q.characters.count > 2) {
+             var ll = ""
+            
+            if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways)
+            {
+                let la  : String! = "\(locationManager.location?.coordinate.latitude)"
+                let long : String! = "\(locationManager.location?.coordinate.longitude)"
+                
+                if let temp = la+","+long as String {
+                    ll = temp
+                }
+                
+                print (ll)
+                
+            } else {
+                promptAccess()
+                return
+                //locationManager.requestAlwaysAuthorization()
+            }
+            
+          //  print ("will not come here")
+            
+            
+            
+            
             UIApplication.sharedApplication().networkActivityIndicatorVisible = true
             q = q.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
            
@@ -59,7 +84,14 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             dateFormatter.dateFormat = "yyyyMMdd"
             let v = dateFormatter.stringFromDate(NSDate())
             
-            let ll = "8.720277777777778,77.65583333333333"
+            
+            
+            
+            
+            
+            
+           
+            
             let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&query="+q+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
             
             
@@ -90,14 +122,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                             var tcatname = ""
                             var tvenueid = ""
                             var timage = ""
+                            var tid = ""
+                            
+                            
+                            if let vid = venues[i]["id"].string{
+                                tid = vid
+                            }
                             if let name = venues[i]["name"].string{
                                 tname = name
                             }
-                          //  print (venues[i]["location"]["formattedAddress"].)
-                            if let catname = venues[i]["location"]["formattedAddress"].array {
-                              //  print(catname.description)
-                                tcatname = catname.description
+                            
+                            if let address =  venues[i]["location"]["formattedAddress"].array {
+                                tcatname = address.minimalDescrption
+                                
+                        
                             }
+                          
+                          //  print (venues[i]["location"]["formattedAddress"].)
+                          /*  if let address = venues[i]["location"]["address"].string,crossStreet = venues[i]["location"]["crossStreet"].string,city = venues[i]["location"]["city"].string,state = venues[i]["location"]["state"].string,postalCode = venues[i]["location"]["postalCode"].string,cc = venues[i]["location"]["cc"].string {
+                                
+                                tcatname = [address,crossStreet,city,state,postalCode,cc]
+                            }*/
                             if let vid = venues[i]["id"].string{
                                 tvenueid = vid
                             }
@@ -108,7 +153,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                             
                             
                             
-                            self.places [i] = [tname, tcatname, timage]
+                            self.places [i] = [tname, tcatname, timage, tid]
                             
                             i = i+1
                             
@@ -161,7 +206,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         //temphistory[0]
         let visit = self.places[indexPath.row]!
-        var shopstr = (visit[0] as? String)! + (visit[1] as! String)
+     //   print (visit)
+        var shopstr = (visit[0] as? String)! + " " + (visit[1] as? String)!
         shopstr = shopstr.trunc(30)
         cell.lblShopName.text = shopstr
         let imgurl =  visit[2] as? String
@@ -220,23 +266,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             break
             
         case .Denied, .Restricted:
-            let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
-                preferredStyle: .Alert)
-            
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
-                }
-            }
-            alertController.addAction(openAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-            
+           
+            promptAccess()
             break
             
         default:
@@ -272,5 +303,24 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
         
         
+    }
+    
+    func promptAccess() {
+        let alertController = UIAlertController(
+            title: "Background Location Access Disabled",
+            message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
+            preferredStyle: .Alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        alertController.addAction(cancelAction)
+        
+        let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
+            if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                UIApplication.sharedApplication().openURL(url)
+            }
+        }
+        alertController.addAction(openAction)
+        
+        self.presentViewController(alertController, animated: true, completion: nil)
     }
 }
