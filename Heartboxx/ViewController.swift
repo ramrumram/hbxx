@@ -114,7 +114,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         print(location.coordinate)
         
         
-        let tmp = String(location.coordinate)
+      //  let tmp = String(location.coordinate)
         
      //   let common = Common();
      //   common.postLog(tmp)

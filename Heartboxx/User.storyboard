@@ -135,6 +135,9 @@
                                                                 <state key="normal" backgroundImage="settings">
                                                                     <color key="titleColor" red="0.07220817357301712" green="0.018060185015201569" blue="0.023200409486889839" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
+                                                                <connections>
+                                                                    <segue destination="tSr-W0-vv7" kind="show" id="ZaO-Au-yxa"/>
+                                                                </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
@@ -676,6 +679,14 @@ Always Private!
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIS-j5-x1v" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3009" y="21"/>
+        </scene>
+        <!--SettingsController-->
+        <scene sceneID="Hdh-Pb-1iy">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="SettingsController" id="tSr-W0-vv7" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="h20-xT-V1Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3731.5" y="556"/>
         </scene>
         <!--Place Detail View Controller-->
         <scene sceneID="ybm-Kz-omF">

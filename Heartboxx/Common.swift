@@ -10,6 +10,7 @@ import Foundation
 import Alamofire
 import SwiftyJSON
 import UIKit
+import KeychainSwift
 
 let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
 let API_Domain = "http://192.168.0.111/heartboxx"
@@ -35,6 +36,20 @@ class Common {
      }
      }*/
     
+    let keychain = KeychainSwift()
+
+    
+    func logout() {
+        let uid = keychain.get("HB_uid")!
+        let URL = NSURL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
+        
+        let imageDownloader = UIImageView.af_sharedImageDownloader
+        let urlRequest = NSURLRequest(URL: URL)
+        imageDownloader.imageCache?.removeImageForRequest(urlRequest, withAdditionalIdentifier: nil)
+        
+        keychain.delete("HB_uid")
+
+    }
     func  postLog(description: String) -> AnyObject {
         
         var rows = ""
