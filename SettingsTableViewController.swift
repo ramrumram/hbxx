@@ -43,6 +43,23 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
             }
    
     
+    @IBAction func btnLogout(sender: AnyObject) {
+        clearImageCache()
+        
+        keychain.delete("HB_uid")
+ 
+         self.navigationController?.popToRootViewControllerAnimated(true)
+    }
+
+    func clearImageCache(){
+        let uid = keychain.get("HB_uid")!
+        let URL = NSURL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
+        
+        let imageDownloader = UIImageView.af_sharedImageDownloader
+        let urlRequest = NSURLRequest(URL: URL)
+        imageDownloader.imageCache?.removeImageForRequest(urlRequest, withAdditionalIdentifier: nil)
+    }
+    
     func loadAvatar(){
         let uid = keychain.get("HB_uid")!
 
@@ -80,9 +97,9 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         let image = images[0]
         
         
-        SwiftSpinner.show("Uploading...").addTapHandler({
-            SwiftSpinner.hide()
-        })
+      //  SwiftSpinner.show("Uploading...").addTapHandler({
+      //      SwiftSpinner.hide()
+      //  })
         let uid = keychain.get("HB_uid")!
 
         // define parameters
@@ -90,6 +107,7 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
             "uid": uid,
             ]
         
+         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
         // Begin upload
         Alamofire.upload(.POST, URL_profile_upload,
                          // define your headers here
@@ -107,18 +125,17 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
             }, // you can customise Threshold if you wish. This is the alamofire's default value
             encodingMemoryThreshold: Manager.MultipartFormDataEncodingMemoryThreshold,
             encodingCompletion: { encodingResult in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
                 switch encodingResult {
                 case .Success(let upload, _, _):
-                     SwiftSpinner.hide()
+                 //    SwiftSpinner.hide()
                     upload.responseJSON { response in
-                        debugPrint(response)
-                        self.dismissViewControllerAnimated(true, completion: {
-                       //     print("donneonoe")
-
-                            self.imgProfile.image = image
-                   //         self.imageCache.addImage(image, withIdentifier: "avatar")
-
-                        })
+                        debugPrint("image uploade")
+                        
+                        
+                         self.imgProfile.image = image
+                        self.clearImageCache()
+                        
                     }
                 case .Failure(let encodingError):
                     print(encodingError)
@@ -126,23 +143,29 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         })
         
         
-        
-        // Begin upload
+        self.dismissViewControllerAnimated(true, completion: {
+            
+        })
         
         
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+       
+        if (segue.identifier == "WebViewSegue") {
+            // pass data to next view
+            let wv = segue.destinationViewController as? WebViewViewController
+
+            wv!.browserURL =  API_Domain + "/about.php"
+        }
+    }
     
     func cancelButtonDidPress(){
         
         //print ("canc")
     }
     
-    func logout () {
-     
-       let common = Common();
-        common.logout()
-    }
+    
 
     
 }

@@ -67,7 +67,7 @@ class NewMessageController: UITableViewController {
                     return
                 }
                
-                print (response)
+               // print (response)
                 SwiftSpinner.hide({
                     self.navigationController?.popViewControllerAnimated(true)
                 })

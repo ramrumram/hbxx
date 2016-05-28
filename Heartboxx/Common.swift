@@ -12,8 +12,10 @@ import SwiftyJSON
 import UIKit
 import KeychainSwift
 
-let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
-let API_Domain = "http://192.168.0.111/heartboxx"
+//let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
+//let API_Domain = "http://192.168.0.111/heartboxx"
+let URL_profile_upload = "http://thepressengine.com:8080/heartboxx/profile_image.php"
+let API_Domain = "http://thepressengine.com:8080/heartboxx"
 
 class Common {
     // MARK: Properties
@@ -39,17 +41,7 @@ class Common {
     let keychain = KeychainSwift()
 
     
-    func logout() {
-        let uid = keychain.get("HB_uid")!
-        let URL = NSURL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
-        
-        let imageDownloader = UIImageView.af_sharedImageDownloader
-        let urlRequest = NSURLRequest(URL: URL)
-        imageDownloader.imageCache?.removeImageForRequest(urlRequest, withAdditionalIdentifier: nil)
-        
-        keychain.delete("HB_uid")
-
-    }
+ 
     func  postLog(description: String) -> AnyObject {
         
         var rows = ""
@@ -78,30 +70,29 @@ class Common {
     }
 
     
-    func  getRecent() -> AnyObject {
+    func  saveBckStatus(status: String) -> Void {
         
-        let rows = [String : AnyObject]()
-        Alamofire.request(
-            .GET,
-            "http://192.168.0.111/heartboxx/",
-            parameters: ["include_docs": "true"],
+        let uid = keychain.get("HB_uid")!
+       Alamofire.request(
+            .POST,
+            API_Domain + "/api/users/savebackgroundlocationstatus",
+            parameters: ["uid": uid, "status" : status],
             encoding: .URL)
             .validate()
             .responseJSON { (response) -> Void in
                 guard response.result.isSuccess else {
-                    print("Error while fetching remote : \(response.result.error)")
+                    print("Error connecting remote: \(response.result.error)")
                     //  completion(nil)
                     return
                 }
-                let res = JSON(response.result.value!)
-                print(res["success"])
                 
-              
         }
         
-        
-        return rows
-    }
+   }
+    
+    
+    
+    
     
 }
 

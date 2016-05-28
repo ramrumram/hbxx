@@ -47,8 +47,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         var q =  (txtSearch.text)!
         
         if(q.characters.count > 2) {
+            self.dismissKeyboard()
              var ll = ""
-            
+            locationManager.requestWhenInUseAuthorization()
             if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
                 CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways)
             {
@@ -103,7 +104,6 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                             
                             var tname = ""
                             var tcatname = ""
-                            var tvenueid = ""
                             var timage = ""
                             var tid = ""
                             
@@ -121,9 +121,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                         
                             }
                           
-                           if let vid = venues[i]["id"].string{
-                                tvenueid = vid
-                            }
+                      
                             
                             if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, sf = venues[i]["categories"][0]["icon"]["suffix"].string {
                                 timage = pf + "bg_32" + sf
@@ -206,7 +204,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        self.dismissKeyboard()
        if  segue.identifier == blogSegueIdentifier{
             let destination = segue.destinationViewController as? PlaceDetailViewController,
             indexPath = self.tableView.indexPathForSelectedRow?.row
@@ -233,8 +231,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     func promptAccess() {
         let alertController = UIAlertController(
-            title: "Background Location Access Disabled",
-            message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
+            title: "Location Access Disabled",
+            message: "In order to get your current location, please open this app's settings and set location access to 'Always' or 'While Using the App'.",
             preferredStyle: .Alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)

@@ -30,7 +30,6 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
               
          let uid = keychain.get("HB_uid")!
         
-        
         Alamofire.request(
             .GET,
             API_Domain + "/api/venues/gethistory/"+uid,
@@ -49,10 +48,11 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
                     return
                 }
                 
-                self.visits = value
-                self.tableView.reloadData()
-        
-                
+                if(value["history"]?.count > 0) {
+                    self.visits = value
+                    self.tableView.reloadData()
+                }else {
+                }
         
         
         }
