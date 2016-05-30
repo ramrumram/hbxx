@@ -34,12 +34,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
        // btnSearchVenue(txtSearch)
         
-        
         tableView.tableFooterView = UIView()
         
       
     }
     
+  
     
     
     @IBAction func btnSearchVenue(sender: AnyObject) {

@@ -119,14 +119,17 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
 
                 let authstate = CLLocationManager.authorizationStatus()
                 if(authstate == CLAuthorizationStatus.AuthorizedAlways){
-                    print ("coming mach")
-                    keychain.delete("HB_monitor_location_once")
+                     keychain.delete("HB_monitor_location_once")
                     //just one time..stop it immediately to save battery power
                   //  locationManager.stopUpdatingLocation()
                   //  locationManager.startUpdatingLocation()
                     
                 }
             }
+            
+          
+            
+            
             let storyboard = UIStoryboard(name: "User", bundle: nil)
             
             let rootController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
@@ -149,7 +152,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             
             locationManager.startMonitoringSignificantLocationChanges()
             
-            //locationManager.startUpdatingLocation()
+          // locationManager.startUpdatingLocation()
             
             break
             
@@ -194,6 +197,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         //locationManager.allowsBackgroundLocationUpdates = false
         
         common.saveBckStatus("0")
+        
         locationManager.stopMonitoringSignificantLocationChanges()
     }
     
@@ -215,10 +219,20 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         let ll = la+","+lo
         
+
+        
+       // print (v)
+     //   print(ll)
+        
+       // locationManager.allowDeferredLocationUpdatesUntilTraveled(CLLocationDistanceMax, timeout: 120)
+        
+        sendLocalNotification(ll)
+        
         if (keychain.get("HB_uid") != nil) {
             
-            
+        
             let uid = keychain.get("HB_uid")!
+
             Alamofire.request(
                 .POST,
                 API_Domain + "/api/venues/history",
@@ -231,25 +245,110 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         //  completion(nil)
                         return
                     }
-                    //         let res = JSON(response.result.value!)
                     
                     
                     
                     
             }
-            //  let common = Common();
-            //   common.postLog(ll+uid)
-            
-            //  print (ll)
-            // print ("dd")
-            
-            //print(location.coordinate)
-            
-            
-            // let tmp = String(location.coordinate)
+   
             
             
         }
+        
+        
+    }
+    
+    func locationManager(manager: CLLocationManager, didFinishDeferredUpdatesWithError error: NSError?) {
+        print("defereloca error")
+    }
+    
+    func sendLocalNotification(ll : String) {
+        let notification = UILocalNotification()
+        notification.fireDate = NSDate(timeIntervalSinceNow: 1)
+        
+        
+        
+        
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.dateFormat = "yyyyMMdd"
+        let v = dateFormatter.stringFromDate(NSDate())
+        
+       
+      //  let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&radius=100&categoryId=4d4b7104d754a06370d81259,4d4b7105d754a06374d81259,4d4b7105d754a06378d81259&v="+v
+        
+        
+        let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
+
+        
+        Alamofire.request(
+            .GET,
+            url,
+            
+            encoding: .URL)
+            .validate()
+            .responseJSON { (response) -> Void in
+                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                guard response.result.isSuccess else {
+                    print("Error while fetching remote rooms: \(response.result.error)")
+                    //  completion(nil)
+                    return
+                }
+                let res = JSON(response.result.value!)
+                let venues = res["response"]["venues"]
+                
+                //to show a slight variation in recording history and showing notificatoin, we are fetching the next matching value fetched. so will take i = 1
+                if venues.count > 1 {
+                
+                    var i = 1
+               
+                        
+                        var tname = ""
+                        var tcatname = ""
+                        var timage = ""
+                        var tid = ""
+                        
+                        
+                        if let vid = venues[i]["id"].string{
+                            tid = vid
+                        }
+                        if let name = venues[i]["name"].string{
+                            tname = name
+                        }
+                        
+                    if let address =  venues[i]["location"]["formattedAddress"].array {
+                        tcatname = address.minimalDescrption
+                        
+                        
+                    }
+                    
+                    
+                        
+                        if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, sf = venues[i]["categories"][0]["icon"]["suffix"].string {
+                            timage = pf + "bg_32" + sf
+                        }
+                        
+                        //self.places [i] = [tname, tcatname, timage, tid]
+                        
+                        notification.alertBody = "We think you will like "+tname+"! "
+                        notification.alertAction = "to see more about that!"
+                        notification.soundName = UILocalNotificationDefaultSoundName
+                        notification.userInfo = ["tname":tname, "tcatname":tcatname, "timage":timage, "tid":tid]
+                        UIApplication.sharedApplication().scheduleLocalNotification(notification)
+                        //just send one notifcation and skip
+                    
+                        
+                    
+
+                    
+                        
+                    }
+                    
+                    
+                }
+                    
+        
+        
+        
         
         
     }

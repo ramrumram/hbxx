@@ -12,11 +12,12 @@ import SwiftyJSON
 import UIKit
 import KeychainSwift
 
-//let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
-//let API_Domain = "http://192.168.0.111/heartboxx"
-let URL_profile_upload = "http://thepressengine.com:8080/heartboxx/profile_image.php"
-let API_Domain = "http://thepressengine.com:8080/heartboxx"
-
+let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
+let API_Domain = "http://192.168.0.111/heartboxx"
+//let URL_profile_upload = "http://thepressengine.com:8080/heartboxx/profile_image.php"
+//let API_Domain = "http://thepressengine.com:8080/heartboxx"
+var device_id = ""
+var notificationPlaceObj = NSDictionary()
 class Common {
     // MARK: Properties
     
