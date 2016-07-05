@@ -22,23 +22,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
  
         
-        print ("deel")
-        //for handling local notification
-        if let options = launchOptions {
-            if let notification = options[UIApplicationLaunchOptionsLocalNotificationKey] as? UILocalNotification {
-                print ("hellow ohooo")
-                if let userInfo = notification.userInfo {
-                    
-                    notificationPlaceObj = userInfo as NSDictionary
-                    
-                    
-                    
-                    
-                    
-                    // do something neat here
-                }
-            }
-        }
         
         
         // Override point for customization after application launch.
@@ -53,38 +36,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CLLocationManagerDelegate
         return true
     }
 
+    //local notifcation handler
     
     func application(application: UIApplication, didReceiveLocalNotification notification: UILocalNotification) {
         if let userInfo = notification.userInfo {
+            
             notificationPlaceObj = userInfo as NSDictionary
             
-            print ("sllsyw here")
-         //   let mainStoryboardIpad : UIStoryboard = UIStoryboard(name: "User", bundle: nil)
-         //   let initialViewControlleripad : UIViewController = mainStoryboardIpad.instantiateViewControllerWithIdentifier("PlaceDetailViewController") as UIViewController
-         //   self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        //    self.window?.rootViewController = initialViewControlleripad
-        //    self.window?.makeKeyAndVisible()
+           
+           // application.cancelLocalNotification(notification)
+            let navigationController = application.windows[0].rootViewController as! UINavigationController
+
+            let mainStoryboard: UIStoryboard = UIStoryboard(name: "User", bundle: nil)
+            
+            navigationController.pushViewController(mainStoryboard.instantiateViewControllerWithIdentifier("PlaceDetailViewController") as UIViewController, animated: true)
 
             
-            
-           // print ("sllsyw here")
-           // print(userInfo)
-           
-            //  print((visit["venue_name"] as? String)!)
-//            destination!.venueName = visit!
-
-             //   let storyboard = UIStoryboard(name: "User", bundle: nil)
-              //   let vc = storyboard.instantiateViewControllerWithIdentifier("PlaceDetailViewController") as! UIViewController
-               //  vc.venueName = visit!
-            
-        //    let viewController = PlaceDetailViewController()
-        //    viewController.venueName = visit
-         //   self.navigationController?.presentViewController(viewController, animated: true, completion: nil)
-            
-           
-       
-            //   self.presentViewController(viewController, animated: true, completion: nil)
-           // print("didReceiveLocalNotification: \(customField1)")
+          
+     
         }
     }
     

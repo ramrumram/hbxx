@@ -14,24 +14,7 @@ import UIKit
 class Validator {
     // MARK: Properties
     
-    //  var name: String
-    // var photo: UIImage?
-    // var category: String
-    
-    // MARK: Initialization
-    
-    /* init?(name: String, photo: UIImage?, category: String) {
-     // Initialize stored properties.
-     self.name = name
-     self.photo = photo
-     self.category = category
-     
-     // Initialization should fail if there is no name or if the rating is negative.
-     if name.isEmpty  {
-     return nil
-     }
-     }*/
-    
+   
     
     
     func validate(validations:Dictionary<Int, NSMutableArray>) -> Bool {

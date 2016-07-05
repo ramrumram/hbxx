@@ -28,15 +28,9 @@ class SignupViewController: UIViewController {
     @IBAction func btnSave(sender: AnyObject) {
         
         
-        
         var dict = Dictionary<Int, NSMutableArray>()
         dict[0] = [txtEmail, lblError1, ["not-empty","email"]] as NSMutableArray
         dict[1] = [txtPassword, lblError2, ["not-empty"]] as NSMutableArray
-        
-        
-        
-        
-        
         
         let validator = Validator()
         

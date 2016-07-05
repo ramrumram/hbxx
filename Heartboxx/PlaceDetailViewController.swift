@@ -32,14 +32,18 @@ class PlaceDetailViewController: UIViewController {
         stackLogo.hidden = false
     }
     override func viewWillAppear(animated: Bool) {
-        //print (venueName)
-        //   blogNameLabel.text = blogName
+
+        
+        
+        /*
       
         //this variable will be initialized when user swiped the notificatoin
         if (notificationPlaceObj.allKeys.count > 0) {
                let place = [notificationPlaceObj["tname"]!,notificationPlaceObj["tcatname"]! ,notificationPlaceObj["timage"]! ,notificationPlaceObj["tid"]!] as NSMutableArray
             venueName = place
         }
+        */
+        
        let vid = venueName[3] as! String
        let dateFormatter = NSDateFormatter()
        dateFormatter.dateFormat = "yyyyMMdd"
@@ -110,14 +114,9 @@ class PlaceDetailViewController: UIViewController {
         if  segue.identifier == blogSegueIdentifier{
             let destination = segue.destinationViewController as? NewMessageController
             
-            
-            //temphistory[0]
-            
-            //  print((visit["venue_name"] as? String)!)
             destination!.venueName = (venueName[0] as? String)!
             destination!.address = (venueName[1] as? String)!
             
-            //  print(indexPath.length)
             
         }
         

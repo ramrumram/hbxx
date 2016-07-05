@@ -36,9 +36,7 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         
         loadAvatar()
         
-        
-        
-        
+         
    
             }
    

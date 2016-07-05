@@ -103,7 +103,6 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     
     
     override func viewWillAppear(animated: Bool) {
-        //   blogNameLabel.text = blogName
         
         //will try going to homeviewcontroller
         goToHome()
@@ -120,14 +119,9 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                 let authstate = CLLocationManager.authorizationStatus()
                 if(authstate == CLAuthorizationStatus.AuthorizedAlways){
                      keychain.delete("HB_monitor_location_once")
-                    //just one time..stop it immediately to save battery power
-                  //  locationManager.stopUpdatingLocation()
-                  //  locationManager.startUpdatingLocation()
                     
                 }
             }
-            
-          
             
             
             let storyboard = UIStoryboard(name: "User", bundle: nil)
@@ -181,7 +175,6 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             break
             
         }
-        // mapView.showsUserLocation = (status == .AuthorizedAlways)
     }
     
     func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
@@ -194,7 +187,6 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     
     
     func stopBackgroud() {
-        //locationManager.allowsBackgroundLocationUpdates = false
         
         common.saveBckStatus("0")
         
@@ -202,14 +194,11 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     }
     
     func startBackgroud() {
-       // locationManager.allowsBackgroundLocationUpdates = true
         common.saveBckStatus("1")
         locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
         
         let location = locations.last! as CLLocation
         let numlat = NSNumber(double: (location.coordinate.latitude) as Double)
@@ -219,14 +208,15 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         let ll = la+","+lo
         
-
+        print (ll)
         
-       // print (v)
-     //   print(ll)
+        //send local notiicaiotn only if it is inactive or in back
+        let state = UIApplication.sharedApplication().applicationState
+         if (state == .Inactive || state == .Background){
+         //    sendLocalNotificationIfAvailable(ll)
+        }
         
-       // locationManager.allowDeferredLocationUpdatesUntilTraveled(CLLocationDistanceMax, timeout: 120)
         
-        sendLocalNotification(ll)
         
         if (keychain.get("HB_uid") != nil) {
             
@@ -246,13 +236,8 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         return
                     }
                     
-                    
-                    
-                    
             }
    
-            
-            
         }
         
         
@@ -262,7 +247,8 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         print("defereloca error")
     }
     
-    func sendLocalNotification(ll : String) {
+    func sendLocalNotificationIfAvailable(ll : String) {
+        /*
         let notification = UILocalNotification()
         notification.fireDate = NSDate(timeIntervalSinceNow: 1)
         
@@ -273,11 +259,10 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         dateFormatter.dateFormat = "yyyyMMdd"
         let v = dateFormatter.stringFromDate(NSDate())
         
+        
        
-      //  let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&radius=100&categoryId=4d4b7104d754a06370d81259,4d4b7105d754a06374d81259,4d4b7105d754a06378d81259&v="+v
+        let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&radius=100&categoryId=4d4b7104d754a06370d81259,4d4b7105d754a06374d81259,4d4b7105d754a06378d81259&v="+v
         
-        
-        let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
 
         
         Alamofire.request(
@@ -322,13 +307,11 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                     }
                     
                     
-                        
                         if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, sf = venues[i]["categories"][0]["icon"]["suffix"].string {
                             timage = pf + "bg_32" + sf
                         }
                         
-                        //self.places [i] = [tname, tcatname, timage, tid]
-                        
+                    
                         notification.alertBody = "We think you will like "+tname+"! "
                         notification.alertAction = "to see more about that!"
                         notification.soundName = UILocalNotificationDefaultSoundName
@@ -336,15 +319,13 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         UIApplication.sharedApplication().scheduleLocalNotification(notification)
                         //just send one notifcation and skip
                     
-                        
                     
-
                     
                         
                     }
                     
                     
-                }
+                }*/
                     
         
         

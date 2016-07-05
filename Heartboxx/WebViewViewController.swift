@@ -41,21 +41,14 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
         super.viewDidLoad()
         
      
-        print(browserURL)
+      
         self.performSelectorOnMainThread(#selector(WebViewViewController.openBrowserView), withObject: nil, waitUntilDone: true)
         
         
         // Do any additional setup after loading the view, typically from a nib.
         //border and corner for login form
         
-        
-        
-        
-        
-        
-        
-        
-        
+            
         
         
         // loginWithKeychain()

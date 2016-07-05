@@ -44,11 +44,11 @@ class NewMessageController: UITableViewController {
         
         //print ("clicked")
         let uid = keychain.get("HB_uid")
-        let message = venueName + " " + address
+     //   let message = venueName + " " + address
         
         
         
-        let params = ["uid": uid!, "message" : message, "to" : venueName, "subject": txtSub.text!]
+        let params = ["uid": uid!, "message" : txtMessage.text!, "to" : venueName, "subject": txtSub.text!]
 
         SwiftSpinner.show("Sending...").addTapHandler({
             SwiftSpinner.hide()
