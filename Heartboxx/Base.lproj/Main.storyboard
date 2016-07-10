@@ -564,7 +564,9 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                             <outlet property="delegate" destination="AAb-41-60i" id="RMK-b7-Zio"/>
                         </connections>
                     </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="settings" id="FdJ-KA-gz3"/>
                     <navigationItem key="navigationItem" title="Settings" id="2km-dr-1IK"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="imgProfile" destination="Sop-j7-69w" id="FBk-k2-Fu6"/>
                     </connections>
@@ -1054,9 +1056,10 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
         <image name="logo-medium" width="128" height="128"/>
         <image name="mail" width="18" height="18"/>
         <image name="phone" width="18" height="18"/>
+        <image name="settings" width="55" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="pge-kb-9Yr"/>
-        <segue reference="8c4-bo-YhJ"/>
+        <segue reference="x1p-8m-mwV"/>
+        <segue reference="kkg-N9-N8O"/>
     </inferredMetricsTieBreakers>
 </document>

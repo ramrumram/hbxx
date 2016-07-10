@@ -6,11 +6,10 @@ import CoreLocation
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
-    @IBOutlet var stackTemp: UIStackView!
-    @IBOutlet var imgTemp: UIImageView!
     @IBOutlet var lblTemp: UILabel!
     
     @IBOutlet var stackTable: UIStackView!
+    @IBOutlet var stackTemp: UIStackView!
     @IBOutlet var txtSearch: UITextField!
     let locationManager = CLLocationManager()
     
@@ -24,6 +23,10 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         self.hideKeyboardWhenTappedAround()
         
         
+        //let labelHgt = UIScreen.mainScreen().bounds.height * 0.25
+        lblTemp.numberOfLines = 15
+        
+
         tableView.delegate = self
         tableView.dataSource = self
         
@@ -204,6 +207,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     // MARK: - Navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        
         self.dismissKeyboard()
        if  segue.identifier == blogSegueIdentifier{
             let destination = segue.destinationViewController as? PlaceDetailViewController,
@@ -222,10 +227,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         
     }
     
-   
-    
-
-    
+     
     
  
     

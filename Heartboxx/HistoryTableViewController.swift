@@ -18,12 +18,16 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     @IBOutlet var tableView: UITableView!
     var visits = [String : AnyObject]()
     
+    
+  
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
               // Load the sample data.
         loadHistory()
+      
     }
     
     func loadHistory() {
