@@ -38,8 +38,7 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
         // Input data into the Array:
         pickerData = ["I'd rather not say", "Male", "Female"]
         self.hideKeyboardWhenTappedAround()
-
-        
+              
         loadData()
     }
     

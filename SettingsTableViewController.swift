@@ -45,6 +45,8 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         clearImageCache()
         
         keychain.delete("HB_uid")
+        keychain.delete("HB_sgcnt")
+        
  
          self.navigationController?.popToRootViewControllerAnimated(true)
     }

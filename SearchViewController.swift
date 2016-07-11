@@ -3,6 +3,7 @@ import Alamofire
 import SwiftyJSON
 import AlamofireImage
 import CoreLocation
+import KeychainSwift
 
 class SearchViewController: UIViewController, UITableViewDataSource, UITableViewDelegate  {
     
@@ -13,15 +14,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     @IBOutlet var txtSearch: UITextField!
     let locationManager = CLLocationManager()
     
+    @IBOutlet var btnSug: UIButton!
+    
     @IBOutlet var tableView: UITableView!
     //var visits = [String : AnyObject]()
     var places = Dictionary<Int, NSMutableArray>()
     let blogSegueIdentifier = "ShowPlaceSegue"
     
+  
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
         self.hideKeyboardWhenTappedAround()
         
+        let keychain = KeychainSwift()
+
+        if (keychain.get("HB_sgcnt") != nil) {
+
+             btnSug.setTitle(keychain.get("HB_sgcnt")!, forState: .Normal)
+        }
         
         //let labelHgt = UIScreen.mainScreen().bounds.height * 0.25
         lblTemp.numberOfLines = 15

@@ -75,9 +75,9 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         return
                     }
                     let res = JSON(response.result.value!)
-                    if let uid = res["uid"].string, bkstatus = res["background_status"].string  {
+                    if let uid = res["uid"].string, bkstatus = res["background_status"].string, sgcnt =  res["no_of_sug"].string {
                         self.keychain.set(uid, forKey: "HB_uid")
-                        
+                        self.keychain.set(sgcnt, forKey: "HB_sgcnt")
                        
                         if (bkstatus == "1") {
                             self.locationManager.startMonitoringSignificantLocationChanges()

@@ -177,10 +177,10 @@
 				D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */,
 				D722B2C41CE5E5EF0091B700 /* ResetPasswordViewController.swift */,
 				D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */,
-				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D722B2C61CE5EE400091B700 /* SignupViewController.swift */,
 				D700DC6E1CEC860A00EFA2F8 /* PrivacyViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
+				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D700DC721CECDB3500EFA2F8 /* TOSTableViewController.swift */,
 				D700DC701CECC78400EFA2F8 /* WebViewViewController.swift */,
 			);

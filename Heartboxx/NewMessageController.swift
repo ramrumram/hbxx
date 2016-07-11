@@ -13,7 +13,7 @@ import KeychainSwift
 import SwiftSpinner
 
 
-class NewMessageController: UITableViewController {
+class NewMessageController: UITableViewController, UITextViewDelegate {
 
     let keychain = KeychainSwift()
     @IBOutlet var txtTo: UITextField!
@@ -21,12 +21,26 @@ class NewMessageController: UITableViewController {
     @IBOutlet var txtMessage: UITextView!
     
     @IBOutlet var txtCC: UITextField!
+ 
     
+   
     
     @IBOutlet var txtSub: UITextField!
     
     var venueName =  String()
     var address = String()
+    
+    
+    override func viewDidLoad() {
+        
+        super.viewDidLoad()
+
+        txtMessage.delegate = self
+     self.hideKeyboardWhenTappedAround()
+        
+        
+             
+    }
     override func viewWillAppear(animated: Bool) {
       //  print (venueName)
         //print (address)
@@ -35,6 +49,8 @@ class NewMessageController: UITableViewController {
         txtMessage.text = address
      //   blogNameLabel.text = blogName
     }
+    
+    
     
     
     @IBAction func btnSend(sender: AnyObject) {
@@ -66,19 +82,61 @@ class NewMessageController: UITableViewController {
                     //  completion(nil)
                     return
                 }
+                
+                
+            
+                
                
-               // print (response)
-                SwiftSpinner.hide({
-                    self.navigationController?.popViewControllerAnimated(true)
-                })
+                            //  SwiftSpinner.hide({
+                    
+                    
+             //   })
                 
                 
-                //let res = JSON(response.result.value!)
-               // rows = String(res["success"])
+               
                 
     }
+        
+        var sgcnt = 1
+        if (self.keychain.get("HB_sgcnt") != nil) {
+            sgcnt =  Int(self.keychain.get("HB_sgcnt")!)! + 1
+            
+        }
+        let str =  String(sgcnt)
+        
+        self.keychain.set(str, forKey: "HB_sgcnt")
+        
+        SwiftSpinner.hide();
+        let storyboard = UIStoryboard(name: "User", bundle: nil)
+        
+        let rootController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+        
+        self.navigationController?.pushViewController(rootController, animated: true)
+        
+    }
+    
+    func animateTextField(textView: UITextView, up: Bool) {
+        let movementDistance:CGFloat = -130
+        let movementDuration: Double = 0.3
+        
+        var movement:CGFloat = 0
+        if up {
+            movement = movementDistance
+        }
+        else {
+            movement = -movementDistance
+        }
+        UIView.beginAnimations("animateTextField", context: nil)
+        UIView.setAnimationBeginsFromCurrentState(true)
+        UIView.setAnimationDuration(movementDuration)
+        self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        UIView.commitAnimations()
     }
     
     
+    func textViewDidBeginEditing(textView: UITextView) {
+         self.animateTextField(textView, up:true)
+        
+    }
     
 }

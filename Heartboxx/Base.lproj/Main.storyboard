@@ -709,7 +709,7 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Home City (optional)" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="trM-8E-Q9J">
-                                                    <rect key="frame" x="69" y="7" width="230" height="30"/>
+                                                    <rect key="frame" x="66" y="7" width="230" height="30"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="230" id="nNk-nb-lE1"/>
                                                     </constraints>
@@ -717,12 +717,12 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="compass" translatesAutoresizingMaskIntoConstraints="NO" id="ewe-sP-VuP">
-                                                    <rect key="frame" x="21" y="13" width="18" height="18"/>
+                                                    <rect key="frame" x="18" y="13" width="18" height="18"/>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="ewe-sP-VuP" firstAttribute="centerY" secondItem="hJD-FZ-wQd" secondAttribute="centerY" id="Cru-Bz-RWZ"/>
-                                                <constraint firstItem="ewe-sP-VuP" firstAttribute="leading" secondItem="hJD-FZ-wQd" secondAttribute="leadingMargin" constant="13" id="Y1r-H2-dhY"/>
+                                                <constraint firstItem="ewe-sP-VuP" firstAttribute="leading" secondItem="hJD-FZ-wQd" secondAttribute="leadingMargin" constant="10" id="Y1r-H2-dhY"/>
                                                 <constraint firstItem="trM-8E-Q9J" firstAttribute="leading" secondItem="ewe-sP-VuP" secondAttribute="trailing" constant="30" id="asj-WL-YoY"/>
                                                 <constraint firstItem="trM-8E-Q9J" firstAttribute="centerY" secondItem="hJD-FZ-wQd" secondAttribute="centerY" id="bv0-16-96i"/>
                                             </constraints>
@@ -736,10 +736,10 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="info" translatesAutoresizingMaskIntoConstraints="NO" id="bDw-x1-TKG">
-                                                    <rect key="frame" x="21" y="13" width="18" height="18"/>
+                                                    <rect key="frame" x="19" y="13" width="18" height="18"/>
                                                 </imageView>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" usesAttributedText="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zP5-1t-Iwc">
-                                                    <rect key="frame" x="72" y="14" width="240" height="122"/>
+                                                    <rect key="frame" x="70" y="14" width="240" height="122"/>
                                                     <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="240" id="GR3-H4-6wn"/>
@@ -750,7 +750,7 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="bDw-x1-TKG" firstAttribute="leading" secondItem="fdt-7Y-VgY" secondAttribute="leadingMargin" constant="13" id="Ajv-CW-WH2"/>
+                                                <constraint firstItem="bDw-x1-TKG" firstAttribute="leading" secondItem="fdt-7Y-VgY" secondAttribute="leadingMargin" constant="11" id="Ajv-CW-WH2"/>
                                                 <constraint firstItem="zP5-1t-Iwc" firstAttribute="centerY" secondItem="fdt-7Y-VgY" secondAttribute="centerY" id="VeR-SS-YiY"/>
                                                 <constraint firstItem="bDw-x1-TKG" firstAttribute="top" secondItem="fdt-7Y-VgY" secondAttribute="topMargin" constant="5" id="n9E-Fo-Mgg"/>
                                                 <constraint firstItem="zP5-1t-Iwc" firstAttribute="leading" secondItem="bDw-x1-TKG" secondAttribute="trailing" constant="33" id="oQD-Yy-IRv"/>
@@ -800,6 +800,7 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Edit" id="K3o-1w-UzN">
+                        <barButtonItem key="backBarButtonItem" title="Edit" id="hLt-ha-wur"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="eyY-CE-PmX">
                             <connections>
                                 <action selector="btnSave:" destination="tc8-VY-gVA" id="CyA-Db-P3V"/>

@@ -7,6 +7,7 @@
     },
     {
       "idiom" : "universal",
+      "filename" : "badge2x.png",
       "scale" : "2x"
     },
     {
@@ -17,5 +18,8 @@
   "info" : {
     "version" : 1,
     "author" : "xcode"
+  },
+  "properties" : {
+    "template-rendering-intent" : "original"
   }
 }
