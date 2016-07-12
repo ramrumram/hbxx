@@ -19,8 +19,10 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
 
     let keychain = KeychainSwift()
 
+
     @IBOutlet var imgProfile: UIImageView!
     
+    @IBOutlet var footerView: UIView!
     let imageCache = AutoPurgingImageCache()
 
     override func viewDidLoad() {
@@ -31,7 +33,7 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         
         imgProfile.addGestureRecognizer(tapGesture)
         imgProfile.userInteractionEnabled = true
-        
+        tableView.tableFooterView = footerView
         
         
         loadAvatar()

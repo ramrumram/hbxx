@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import SwiftyJSON
 import AlamofireImage
-
+import KeychainSwift
 
 class PlaceDetailViewController: UIViewController {
     
@@ -24,12 +24,27 @@ class PlaceDetailViewController: UIViewController {
     @IBOutlet var stackMainImg: UIStackView!
     
     
+    @IBOutlet var stackPlace1: UIStackView!
+    @IBOutlet var lblPlace1: UILabel!
     let blogSegueIdentifier = "ShowNewMessage"
-    @IBOutlet var stackLogo: UIStackView!
+    @IBOutlet var btnSug: UIButton!
+    
     override func viewDidLoad() {
+        lblPlace1.layer.borderWidth = 2.0
+        lblPlace1.layer.cornerRadius = 8
+        lblPlace1.layer.borderColor = UIColor(red: 241/255, green: 239/255, blue: 241/255, alpha: 1).CGColor
         
+        stackPlace1.hidden = true
         stackMainImg.hidden = true
-        stackLogo.hidden = false
+        
+        let keychain = KeychainSwift()
+        
+        if (keychain.get("HB_sgcnt") != nil) {
+            
+            btnSug.setTitle(keychain.get("HB_sgcnt")!, forState: .Normal)
+        }
+        
+        
     }
     override func viewWillAppear(animated: Bool) {
 
@@ -49,10 +64,11 @@ class PlaceDetailViewController: UIViewController {
        dateFormatter.dateFormat = "yyyyMMdd"
        let v = dateFormatter.stringFromDate(NSDate())
 
-        
+        lblPlace1.text = " " + (venueName[0] as? String)! + " " + (venueName[4] as? String)! + " "
     
         lblPlaceName.text = (venueName[0] as? String)!
-        lblAddress.text = (venueName[1] as? String)!
+        lblAddress.text = " " + (venueName[4] as? String)! + ", " + (venueName[5] as? String)! + " "
+        
         
        
         
@@ -83,8 +99,9 @@ class PlaceDetailViewController: UIViewController {
                 let photos  = ires["response"]["photos"]
                 var timage = ""
                 if(photos["count"] > 0) {
+                    self.stackPlace1.hidden = false
                     self.stackMainImg.hidden = false
-                    self.stackLogo.hidden = true
+                    
                     if let sf = photos["items"][0]["suffix"].string, pf = photos["items"][0]["prefix"].string  {
                         
                         timage =  pf + "400x200" +  sf

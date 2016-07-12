@@ -116,7 +116,7 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
     }
     
     func animateTextField(textView: UITextView, up: Bool) {
-        let movementDistance:CGFloat = -130
+        let movementDistance:CGFloat = -110
         let movementDuration: Double = 0.3
         
         var movement:CGFloat = 0
@@ -138,5 +138,9 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
          self.animateTextField(textView, up:true)
         
     }
-    
+   
+    func textViewDidEndEditing(textView: UITextView) {
+        self.animateTextField(textView, up:false)
+        
+    }
 }

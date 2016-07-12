@@ -121,6 +121,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                             var tcatname = ""
                             var timage = ""
                             var tid = ""
+                            var smallAddr = ""
+                            var st = ""
                             
                             
                             if let vid = venues[i]["id"].string{
@@ -130,6 +132,9 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                                 tname = name
                             }
                             
+                            
+                            
+                          
                             if let address =  venues[i]["location"]["formattedAddress"].array {
                                 tcatname = address.minimalDescrption
                                 
@@ -142,9 +147,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                                 timage = pf + "bg_32" + sf
                             }
                             
+                            if let name = venues[i]["location"]["address"].string,s = venues[i]["location"]["crossStreet"].string {
+                                smallAddr = name
+                                st = s
+                            }
                             
-                            
-                            self.places [i] = [tname, tcatname, timage, tid]
+                            self.places [i] = [tname, tcatname, timage, tid, smallAddr, st]
                             
                             i = i+1
                             

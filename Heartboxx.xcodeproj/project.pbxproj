@@ -43,6 +43,7 @@
 		D7AA4BD71CE1E004008E83A2 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */; };
 		D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */; };
 		D7AA4BDD1CE32CB7008E83A2 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */; };
+		D7D9234B1D34CED700B93096 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */; };
 		D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */; };
 		D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA7F381CD23D5C00C1E917 /* Common.swift */; };
 /* End PBXBuildFile section */
@@ -101,6 +102,7 @@
 		D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchViewController.swift; path = ../SearchViewController.swift; sourceTree = "<group>"; };
 		D7AA4BD81CE1E14D008E83A2 /* SearchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchTableViewCell.swift; sourceTree = "<group>"; };
 		D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
+		D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = ../SuggestionsViewController.swift; sourceTree = "<group>"; };
 		D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
 		D7FA7F381CD23D5C00C1E917 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Heartboxx/Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -177,6 +179,7 @@
 				D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */,
 				D722B2C41CE5E5EF0091B700 /* ResetPasswordViewController.swift */,
 				D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */,
+				D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */,
 				D722B2C61CE5EE400091B700 /* SignupViewController.swift */,
 				D700DC6E1CEC860A00EFA2F8 /* PrivacyViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
@@ -312,6 +315,7 @@
 				D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */,
 				D700DC711CECC78400EFA2F8 /* WebViewViewController.swift in Sources */,
 				D700DC6F1CEC860A00EFA2F8 /* PrivacyViewController.swift in Sources */,
+				D7D9234B1D34CED700B93096 /* SuggestionsViewController.swift in Sources */,
 				D7254CD91CE17437004FDB4A /* Validator.swift in Sources */,
 				D722B2B11CE4BA330091B700 /* MailboxViewController.swift in Sources */,
 				D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */,
