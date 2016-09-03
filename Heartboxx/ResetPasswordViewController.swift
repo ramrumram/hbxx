@@ -11,10 +11,14 @@ class ResetPasswordViewController: UIViewController {
     @IBOutlet var lblError: UILabel!
   
     override func viewDidLoad() {
-        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenSingleTappedAround()
 
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+
         
     }
     
@@ -47,11 +51,11 @@ class ResetPasswordViewController: UIViewController {
                 encoding: .URL)
                 .validate()
                 .responseJSON { (response) -> Void in
+                //    print(response.result)
                     guard response.result.isSuccess else {
                         SwiftSpinner.hide()
                         
                         self.lblError.text = "System error!"
-                        
                         
                         return
                     }
@@ -74,6 +78,31 @@ class ResetPasswordViewController: UIViewController {
             
         }
         
+        
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+            if view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 100
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+            if view.frame.origin.y != 0 {
+                self.view.frame.origin.y += 100
+            }
+            else {
+                
+            }
+        }
     }
     
     

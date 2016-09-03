@@ -12,10 +12,12 @@ import SwiftyJSON
 import UIKit
 import KeychainSwift
 
-let URL_profile_upload = "http://192.168.0.111/heartboxx/profile_image.php"
-let API_Domain = "http://192.168.0.111/heartboxx"
-//let URL_profile_upload = "http://thepressengine.com:8080/heartboxx/profile_image.php"
-//let API_Domain = "http://thepressengine.com:8080/heartboxx"
+//let URL_profile_upload = "http://192.168.2.2/heartboxx/profile_image.php"
+//let API_Domain = "http://192.168.2.2/heartboxx"
+
+let URL_profile_upload = "http://heartboxx.com/heartboxx/profile_image.php"
+let API_Domain = "http://heartboxx.com/heartboxx"
+
 var device_id = ""
 var notificationPlaceObj = NSDictionary()
 class Common {
@@ -96,6 +98,12 @@ extension UIViewController {
         view.addGestureRecognizer(tap)
     }
     
+    func hideKeyboardWhenSingleTappedAround() {
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIViewController.dismissKeyboard))
+        tap.numberOfTapsRequired=1
+        view.addGestureRecognizer(tap)
+    }
+    
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -106,3 +114,5 @@ extension SequenceType {
         return map { String($0) }.joinWithSeparator(",")
     }
 }
+
+

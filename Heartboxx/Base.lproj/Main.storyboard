@@ -198,12 +198,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kk-uQ-Bru">
-                                                    <rect key="frame" x="-26" y="36" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Current password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H3i-SZ-77E">
                                                     <rect key="frame" x="8" y="27" width="300" height="30"/>
                                                     <constraints>
@@ -212,10 +206,21 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Kk-uQ-Bru">
+                                                    <rect key="frame" x="8" y="0.0" width="300" height="28"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="z2l-mQ-ElF"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="5Kk-uQ-Bru" firstAttribute="leading" secondItem="X8R-wS-Xbd" secondAttribute="leadingMargin" id="277-Ce-UoO"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="H3i-SZ-77E" secondAttribute="leading" id="Nkl-1N-R5U"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="H3i-SZ-77E" secondAttribute="bottom" id="Ufs-gC-V2S"/>
+                                                <constraint firstItem="5Kk-uQ-Bru" firstAttribute="top" secondItem="X8R-wS-Xbd" secondAttribute="topMargin" id="xfg-WL-ACk"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -226,12 +231,6 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="65"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTp-hB-Yys">
-                                                    <rect key="frame" x="90" y="-6" width="0.0" height="0.0"/>
-                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
-                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="7V3-IC-lQS">
                                                     <rect key="frame" x="8" y="27" width="300" height="30"/>
                                                     <constraints>
@@ -240,10 +239,21 @@
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                                                 </textField>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hTp-hB-Yys">
+                                                    <rect key="frame" x="8" y="0.0" width="300" height="29"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="300" id="AfR-mI-Abi"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
+                                                    <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="hTp-hB-Yys" firstAttribute="top" secondItem="xEL-cz-ccD" secondAttribute="topMargin" id="L0h-0J-0Hm"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="7V3-IC-lQS" secondAttribute="bottom" id="a5d-dK-hXR"/>
                                                 <constraint firstAttribute="leadingMargin" secondItem="7V3-IC-lQS" secondAttribute="leading" id="k0Q-GY-01N"/>
+                                                <constraint firstItem="hTp-hB-Yys" firstAttribute="leading" secondItem="xEL-cz-ccD" secondAttribute="leadingMargin" id="zth-oH-tBx"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -328,7 +338,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Background Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-te-g9Z">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Background Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ie3-te-g9Z">
                                                     <rect key="frame" x="8" y="11" width="148" height="21"/>
                                                     <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -874,8 +884,8 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="ozJ-aA-EyV">
-                                <rect key="frame" x="150" y="207" width="300" height="187"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" alignment="top" translatesAutoresizingMaskIntoConstraints="NO" id="w2Z-7P-KCO">
+                                <rect key="frame" x="150" y="222" width="300" height="151"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Ttj-XG-WnQ">
                                         <rect key="frame" x="0.0" y="0.0" width="300" height="94"/>
@@ -920,11 +930,11 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                             <constraint firstItem="pFW-21-uv3" firstAttribute="width" secondItem="7no-NZ-rsG" secondAttribute="width" id="J1z-U2-Eyw"/>
                                         </constraints>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x62-xV-oce">
-                                        <rect key="frame" x="0.0" y="124" width="300" height="63"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="x62-xV-oce">
+                                        <rect key="frame" x="0.0" y="94" width="300" height="57"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-7b-zhz">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dTj-7b-zhz">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="26"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                 <state key="normal" title="Forgot Password?">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -933,8 +943,8 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                                     <segue destination="2HM-hp-PS4" kind="show" id="kkg-N9-N8O"/>
                                                 </connections>
                                             </button>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiv-CT-JGW">
-                                                <rect key="frame" x="0.0" y="34" width="300" height="29"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiv-CT-JGW">
+                                                <rect key="frame" x="0.0" y="31" width="300" height="26"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="12"/>
                                                 <state key="normal" title="No account yet? Quick Signup">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -946,12 +956,15 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                         </subviews>
                                     </stackView>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstItem="x62-xV-oce" firstAttribute="centerX" secondItem="w2Z-7P-KCO" secondAttribute="centerX" id="aAg-5a-CKD"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <color key="backgroundColor" red="0.60392156862745094" green="0.16078431372549021" blue="0.1803921568627451" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="ozJ-aA-EyV" firstAttribute="centerY" secondItem="1hM-ap-qDD" secondAttribute="centerY" id="FXM-oT-9MR"/>
-                            <constraint firstItem="ozJ-aA-EyV" firstAttribute="centerX" secondItem="1hM-ap-qDD" secondAttribute="centerX" id="N2v-0r-AhI"/>
+                            <constraint firstItem="w2Z-7P-KCO" firstAttribute="centerX" secondItem="1hM-ap-qDD" secondAttribute="centerX" id="1rh-sA-mPe"/>
+                            <constraint firstItem="w2Z-7P-KCO" firstAttribute="centerY" secondItem="1hM-ap-qDD" secondAttribute="centerY" id="UsC-Nu-Rou"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yP2-w8-bo7">
@@ -985,25 +998,25 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FaJ-HP-cl3">
-                                <rect key="frame" x="150" y="227" width="300" height="147"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="FaJ-HP-cl3">
+                                <rect key="frame" x="150" y="227" width="300" height="139"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5aC-NH-aRm">
-                                        <rect key="frame" x="0.0" y="0.0" width="300" height="147"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="5aC-NH-aRm">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="139"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your email address and we will send you instructions to create a new password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqS-jB-pb4">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="36"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Enter your email address and we will send you instructions to create a new password" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DqS-jB-pb4">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="31"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="13"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EtY-5S-Qlt">
-                                                <rect key="frame" x="0.0" y="46" width="300" height="30"/>
+                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EtY-5S-Qlt">
+                                                <rect key="frame" x="0.0" y="41" width="300" height="30"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits"/>
                                             </textField>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-Oa-02b">
-                                                <rect key="frame" x="0.0" y="86" width="300" height="18"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKg-Oa-02b">
+                                                <rect key="frame" x="0.0" y="81" width="300" height="18"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="300" id="3oW-6g-bQ9"/>
                                                     <constraint firstAttribute="height" constant="18" id="OCG-X9-qPn"/>
@@ -1012,8 +1025,8 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                                                 <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVd-Fk-bWe">
-                                                <rect key="frame" x="0.0" y="114" width="300" height="33"/>
+                                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MVd-Fk-bWe">
+                                                <rect key="frame" x="0.0" y="109" width="300" height="30"/>
                                                 <fontDescription key="fontDescription" name="OpenSans" family="Open Sans" pointSize="15"/>
                                                 <state key="normal" title="Submit">
                                                     <color key="titleColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1059,7 +1072,7 @@ Don't worry, we've worked hard to make sure this feature only uses a tiny bit of
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="J6R-cK-CIc" kind="relationship" relationship="rootViewController" id="QvA-v2-JcW"/>
+                        <segue destination="J6R-cK-CIc" kind="relationship" relationship="rootViewController" id="1Mk-ae-PDt"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v8Z-U3-1SA" userLabel="First Responder" sceneMemberID="firstResponder"/>

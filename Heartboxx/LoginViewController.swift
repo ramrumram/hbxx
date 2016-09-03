@@ -35,11 +35,16 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.hideKeyboardWhenTappedAround()
+        self.hideKeyboardWhenSingleTappedAround()
         
         locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
         locationManager.requestAlwaysAuthorization()
+  
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+
         
     }
     
@@ -68,6 +73,9 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                 .validate()
                 .responseJSON { (response) -> Void in
                     SwiftSpinner.hide()
+                    print(response)
+                    
+                    
                     guard response.result.isSuccess else {
                         self.lblError.text = "Invalid credentials"
                              print("Error connecting remote: \(response.result.error)")
@@ -208,7 +216,6 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         let ll = la+","+lo
         
-        print (ll)
         
         //send local notiicaiotn only if it is inactive or in back
         let state = UIApplication.sharedApplication().applicationState
@@ -332,6 +339,30 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         
         
+    }
+    
+    func keyboardWillShow(notification: NSNotification) {
+        
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+            if view.frame.origin.y == 0{
+                self.view.frame.origin.y -= 100
+            }
+            else {
+                
+            }
+        }
+        
+    }
+    
+    func keyboardWillHide(notification: NSNotification) {
+        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+            if view.frame.origin.y != 0 {
+                self.view.frame.origin.y += 100
+            }
+            else {
+                
+            }
+        }
     }
     
 }

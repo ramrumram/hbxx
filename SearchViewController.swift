@@ -9,6 +9,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     @IBOutlet var lblTemp: UILabel!
     
+    @IBOutlet var lblQuote: UILabel!
     @IBOutlet var stackTable: UIStackView!
     @IBOutlet var stackTemp: UIStackView!
     @IBOutlet var txtSearch: UITextField!
@@ -47,17 +48,76 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         navigationItem.leftBarButtonItem = backButton
         
         
-       // btnSearchVenue(txtSearch)
+ 
+        
         
         tableView.tableFooterView = UIView()
         
       
     }
     
-  
+    func animateQuote (i: Int) {
+        
+        
+        
+        // Fade in the view
+        UIView.animateWithDuration(1.0, animations: { () -> Void in
+            self.lblQuote.alpha = 1
+        }) { (Bool) -> Void in
+            
+            // After the animation completes, fade out the view after a delay
+            
+            UIView.animateWithDuration(3.0, delay: 3, options: [.CurveEaseInOut], animations: { () -> Void in
+                self.lblQuote.alpha = 0
+                
+                //assign random quote
+                
+                
+                
+                
+                },
+                                       completion:  {finished in
+                if finished {
+                    
+                    var quotes:[String] = ["\"I want to see this neighbourhood thrive.\"", "\"If only the lights were dimmed down a bit more.\"", "\"I want them to succeed.\""]
+                    
+                    
+                      self.lblQuote.text = quotes[i%3]
+
+                self.animateQuote(i + 1)
+            }
+        })
+    }
+    }
+ 
     
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+    
+    
+        
+        
+        self.animateQuote(0)
+        
+        
+
+    }
+    
+    
+    
+    
+    
+    @IBAction func searchEditBegan(sender: AnyObject) {
+        
+        lblTemp.text=""
+    }
     
     @IBAction func btnSearchVenue(sender: AnyObject) {
+        
+        
+    
+        
         
         var q =  (txtSearch.text)!
         
