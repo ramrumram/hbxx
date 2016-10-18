@@ -35,9 +35,8 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
          let uid = keychain.get("HB_uid")!
         
         Alamofire.request(
-            .GET,
             API_Domain + "/api/venues/gethistory/"+uid,
-            encoding: .URL)
+            encoding: URLEncoding.default)
             .validate()
             .responseJSON { (response) -> Void in
                 guard response.result.isSuccess else {
@@ -52,7 +51,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
                     return
                 }
                 
-                if(value["history"]?.count > 0) {
+                if((value["history"]?.count)! > 0) {
                     self.visits = value
                     self.tableView.reloadData()
                 }else {
@@ -73,7 +72,7 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     
     // MARK: - Table view data source
     
-     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+     func numberOfSections(in tableView: UITableView) -> Int {
         if((self.visits["history"]) != nil) {
             return (self.visits["history"]?.count)!
         }else {
@@ -81,10 +80,10 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         }
     }
     
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if((self.visits["history"]) != nil) {
-           // return (self.visits["history"]?.count)!
-            return self.visits["history"]![section].count;
+         //   return self.visits["history"]![section].count;
+             return 0
         }else {
             return 0
         }
@@ -105,28 +104,28 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
         
     }*/
     
-     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "HistoryTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! HistoryTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! HistoryTableViewCell
        
         let temphistory = visits["history"] as! [NSArray]
         
 
         //temphistory[0]
-        let visit = temphistory[indexPath.section][indexPath.row]
+        let visit = temphistory[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row]  as! [String:AnyObject]
         
         
         
         cell.lblShopName.text = visit["venue_name"] as? String
         let imgurl =  visit["cat_img"]! as? String
-     //   print(imgurl)
-        let URL = NSURL(string: imgurl!)!
+     
+        let URL = Foundation.URL(string: imgurl!)!
         let placeholderImage = UIImage(named: "logo")!
         
-        cell.imgHistory.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+        cell.imgHistory.af_setImage(withURL: URL, placeholderImage: placeholderImage)
         
-       // cell.imgHistory.image = visit["cat_img"] as? String
+      
         cell.lblCategory.text = visit["category"] as? String
         
         return cell
@@ -140,17 +139,17 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     let blogSegueIdentifier = "ShowNewMessage"
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
             if let button = sender as? UIButton {
             let cell = button.superview?.superview as! UITableViewCell
-            let destination = segue.destinationViewController as? NewMessageController,
-            indexPath = self.tableView.indexPathForCell(cell)!
+            let destination = segue.destination as? NewMessageController,
+            indexPath = self.tableView.indexPath(for: cell)!
                 let temphistory = visits["history"] as! [NSArray]
                 
                 
                 //temphistory[0]
-                let visit = temphistory[indexPath.section][indexPath.row]
+                let visit = temphistory[(indexPath as NSIndexPath).section][(indexPath as NSIndexPath).row] as! [String:AnyObject]
                 
           //  print((visit["venue_name"] as? String)!)
             destination!.venueName = (visit["venue_name"] as? String)!
@@ -163,25 +162,24 @@ class HistoryTableViewController: UIViewController, UITableViewDataSource, UITab
     }
     
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return CGFloat(27);
     }
     
  
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
         var title = ""
-        if let temp = self.visits["history"]![section][0]["visit_date"]! {
-             title = temp as! String
-            // there is a value and it's currently undraped and is stored in a constant
-        }
+       // if let temp = self.visits["history"]![section][0]["visit_date"]! {
+       //      title = temp as! String
+       // }
         
-        let view = UIView(frame: CGRectMake(0, 0, tableView.frame.size.width, 18))
-        let label = UILabel(frame: CGRectMake(10, 5, tableView.frame.size.width, 18))
-        label.font = UIFont.systemFontOfSize(14)
+        let view = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.size.width, height: 18))
+        let label = UILabel(frame: CGRect(x: 10, y: 5, width: tableView.frame.size.width, height: 18))
+        label.font = UIFont.systemFont(ofSize: 14)
         label.text = title
-        label.textColor = UIColor.whiteColor()
+        label.textColor = UIColor.white
         view.addSubview(label)
         view.backgroundColor = UIColor(red: 255/255, green: 198/255, blue: 186/255, alpha: 1)
         

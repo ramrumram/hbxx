@@ -42,13 +42,13 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.requestAlwaysAuthorization()
   
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         
     }
     
-    @IBAction func login(sender: AnyObject) {
+    @IBAction func login(_ sender: AnyObject) {
         
         
         self.dismissKeyboard()
@@ -66,10 +66,10 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             SwiftSpinner.show("Aunthenticating...")
             
             Alamofire.request(
-                .POST,
                 API_Domain + "/api/login",
+                  method: .post,
                 parameters: ["email": txtEmail.text!, "password": txtPassword.text!],
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                     SwiftSpinner.hide()
@@ -83,7 +83,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         return
                     }
                     let res = JSON(response.result.value!)
-                    if let uid = res["uid"].string, bkstatus = res["background_status"].string, sgcnt =  res["no_of_sug"].string {
+                    if let uid = res["uid"].string, let bkstatus = res["background_status"].string, let sgcnt =  res["no_of_sug"].string {
                         self.keychain.set(uid, forKey: "HB_uid")
                         self.keychain.set(sgcnt, forKey: "HB_sgcnt")
                        
@@ -110,7 +110,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         
         //will try going to homeviewcontroller
         goToHome()
@@ -125,7 +125,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             if(keychain.get("HB_monitor_location_once") != nil) {
 
                 let authstate = CLLocationManager.authorizationStatus()
-                if(authstate == CLAuthorizationStatus.AuthorizedAlways){
+                if(authstate == CLAuthorizationStatus.authorizedAlways){
                      keychain.delete("HB_monitor_location_once")
                     
                 }
@@ -134,7 +134,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             
             let storyboard = UIStoryboard(name: "User", bundle: nil)
             
-            let rootController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+            let rootController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
             
             self.navigationController?.pushViewController(rootController, animated: true)
         }
@@ -142,14 +142,14 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     
     
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .NotDetermined:
+        case .notDetermined:
             print(".NotDetermined")
             locationManager.requestAlwaysAuthorization()
             break
             
-        case .Authorized:
+        case .authorizedAlways:
             print(".Authorized")
             
             locationManager.startMonitoringSignificantLocationChanges()
@@ -158,23 +158,23 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             
             break
             
-        case .Denied, .Restricted:
+        case .denied, .restricted:
             let alertController = UIAlertController(
                 title: "Background Location Access Disabled",
                 message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
-                preferredStyle: .Alert)
+                preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
+            let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+                if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.openURL(url)
                 }
             }
             alertController.addAction(openAction)
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
             
             break
             
@@ -185,11 +185,11 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         print("Monitoring failed for region with identifier: \(region!.identifier)")
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager failed with the following error: \(error)")
     }
     
@@ -206,20 +206,20 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         locationManager.startMonitoringSignificantLocationChanges()
     }
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         let location = locations.last! as CLLocation
-        let numlat = NSNumber(double: (location.coordinate.latitude) as Double)
+        let numlat = NSNumber(value: (location.coordinate.latitude) as Double as Double)
         let la:String = numlat.stringValue
-        let numlo = NSNumber(double: (location.coordinate.longitude) as Double)
+        let numlo = NSNumber(value: (location.coordinate.longitude) as Double as Double)
         let lo:String = numlo.stringValue
         
         let ll = la+","+lo
         
         
         //send local notiicaiotn only if it is inactive or in back
-        let state = UIApplication.sharedApplication().applicationState
-         if (state == .Inactive || state == .Background){
+        let state = UIApplication.shared.applicationState
+         if (state == .inactive || state == .background){
          //    sendLocalNotificationIfAvailable(ll)
         }
         
@@ -231,10 +231,10 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             let uid = keychain.get("HB_uid")!
 
             Alamofire.request(
-                .POST,
                 API_Domain + "/api/venues/history",
+                method: .post,
                 parameters: ["uid": uid, "ll": ll],
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                     guard response.result.isSuccess else {
@@ -250,11 +250,11 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-    func locationManager(manager: CLLocationManager, didFinishDeferredUpdatesWithError error: NSError?) {
+    func locationManager(_ manager: CLLocationManager, didFinishDeferredUpdatesWithError error: Error?) {
         print("defereloca error")
     }
     
-    func sendLocalNotificationIfAvailable(ll : String) {
+    func sendLocalNotificationIfAvailable(_ ll : String) {
         /*
         let notification = UILocalNotification()
         notification.fireDate = NSDate(timeIntervalSinceNow: 1)
@@ -341,9 +341,9 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+        if (((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if view.frame.origin.y == 0{
                 self.view.frame.origin.y -= 100
             }
@@ -354,8 +354,8 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+    func keyboardWillHide(_ notification: Notification) {
+        if (((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 100
             }

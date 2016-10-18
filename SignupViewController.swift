@@ -25,7 +25,7 @@ class SignupViewController: UIViewController {
     
     
     
-    @IBAction func btnSave(sender: AnyObject) {
+    @IBAction func btnSave(_ sender: AnyObject) {
         
         
         var dict = Dictionary<Int, NSMutableArray>()
@@ -42,10 +42,10 @@ class SignupViewController: UIViewController {
             })
             
             Alamofire.request(
-                .POST,
                 API_Domain + "/api/user",
+                method: .post,
                 parameters: ["email": txtEmail.text!, "password": txtPassword.text!],
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                     SwiftSpinner.hide()
@@ -69,7 +69,7 @@ class SignupViewController: UIViewController {
                             "HB_uid")
                         self.keychain.set("yes", forKey:
                         "HB_monitor_location_once")
-                     self.navigationController?.popToRootViewControllerAnimated(true)
+                     self.navigationController?.popToRootViewController(animated: true)
                       
                     
                     

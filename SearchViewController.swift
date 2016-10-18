@@ -33,7 +33,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
 
         if (keychain.get("HB_sgcnt") != nil) {
 
-             btnSug.setTitle(keychain.get("HB_sgcnt")!, forState: .Normal)
+             btnSug.setTitle(keychain.get("HB_sgcnt")!, for: .normal)
         }
         
         //let labelHgt = UIScreen.mainScreen().bounds.height * 0.25
@@ -44,7 +44,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         tableView.dataSource = self
         
         
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
         
         
@@ -56,30 +56,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
       
     }
     
-    func animateQuote (i: Int) {
+    func animateQuote (_ i: Int) {
         
         
         
         // Fade in the view
-        UIView.animateWithDuration(1.0, animations: { () -> Void in
+        UIView.animate(withDuration: 1.0, animations: { () -> Void in
             self.lblQuote.alpha = 1
-        }) { (Bool) -> Void in
+        }, completion: { (Bool) -> Void in
             
             // After the animation completes, fade out the view after a delay
             
-            UIView.animateWithDuration(3.0, delay: 3, options: [.CurveEaseInOut], animations: { () -> Void in
+            UIView.animate(withDuration: 3.0, delay: 3, options: UIViewAnimationOptions(), animations: { () -> Void in
                 self.lblQuote.alpha = 0
                 
                 //assign random quote
-                
-                
-                
                 
                 },
                                        completion:  {finished in
                 if finished {
                     
-                    var quotes:[String] = ["\"I want to see this neighbourhood thrive.\"", "\"If only the lights were dimmed down a bit more.\"", "\"I want them to succeed.\""]
+                    var quotes:[String] = ["\"I want to see this neighborhood thrive.\"", "\"If only the lights were dimmed down a bit more.\"", "\"I want them to succeed.\""]
                     
                     
                       self.lblQuote.text = quotes[i%3]
@@ -87,36 +84,27 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                 self.animateQuote(i + 1)
             }
         })
-    }
+    }) 
     }
  
     
     
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-    
-    
-        
         
         self.animateQuote(0)
-        
-        
 
     }
     
     
     
-    
-    
-    @IBAction func searchEditBegan(sender: AnyObject) {
+    @IBAction func searchEditBegan(_ sender: AnyObject) {
         
         lblTemp.text=""
     }
     
-    @IBAction func btnSearchVenue(sender: AnyObject) {
+    @IBAction func btnSearchVenue(_ sender: AnyObject) {
         
-        
-    
         
         
         var q =  (txtSearch.text)!
@@ -125,12 +113,12 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             self.dismissKeyboard()
              var ll = ""
             locationManager.requestWhenInUseAuthorization()
-            if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedWhenInUse ||
-                CLLocationManager.authorizationStatus() == CLAuthorizationStatus.AuthorizedAlways)
+            if (CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedWhenInUse ||
+                CLLocationManager.authorizationStatus() == CLAuthorizationStatus.authorizedAlways)
             {
-                let numlat = NSNumber(double: (locationManager.location?.coordinate.latitude)! as Double)
+                let numlat = NSNumber(value: (locationManager.location?.coordinate.latitude)! as Double as Double)
                 let la:String = numlat.stringValue
-                let numlo = NSNumber(double: (locationManager.location?.coordinate.longitude)! as Double)
+                let numlo = NSNumber(value: (locationManager.location?.coordinate.longitude)! as Double as Double)
                 let lo:String = numlo.stringValue
                 
                  ll = la+","+lo
@@ -142,26 +130,26 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
             
             
             
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-            q = q.stringByAddingPercentEncodingWithAllowedCharacters(.URLHostAllowedCharacterSet())!
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
+           // q = q.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed())!
            
             
-            let dateFormatter = NSDateFormatter()
+            let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "yyyyMMdd"
-            let v = dateFormatter.stringFromDate(NSDate())
+            let v = dateFormatter.string(from: Date())
            
             
             let url =  "https://api.foursquare.com/v2/venues/search?ll="+ll+"&query="+q+"&client_id=MNGNKO0QUJK2534VZKPGF5YD1NUW0AZM0F1YFJHIANYBAVJH&client_secret=2TIP4IONOYKBBTPYA1FGFARLY0JCVDCJIK3L1RG1N2NPJ21E&limit=4&v="+v
             
             
             Alamofire.request(
-                .GET,
+                
                 url,
                 
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     guard response.result.isSuccess else {
                         print("Error while fetching remote rooms: \(response.result.error)")
                         //  completion(nil)
@@ -172,8 +160,8 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     
                     
                     if venues.count > 0 {
-                        self.stackTemp.hidden=true
-                        self.stackTable.hidden=false
+                        self.stackTemp.isHidden=true
+                        self.stackTable.isHidden=false
                         var i = 0
                         while i < venues.count {
                             
@@ -203,11 +191,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                           
                       
                             
-                            if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, sf = venues[i]["categories"][0]["icon"]["suffix"].string {
+                            if let pf = venues[i]["categories"][0]["icon"]["prefix"].string, let sf = venues[i]["categories"][0]["icon"]["suffix"].string {
                                 timage = pf + "bg_32" + sf
                             }
                             
-                            if let name = venues[i]["location"]["address"].string,s = venues[i]["location"]["crossStreet"].string {
+                            if let name = venues[i]["location"]["address"].string,let s = venues[i]["location"]["crossStreet"].string {
                                 smallAddr = name
                                 st = s
                             }
@@ -222,16 +210,16 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
                     }else {
                         self.lblTemp.text = "Sorry! No records found"
                         //no venu found
-                        self.stackTemp.hidden=false
-                        self.stackTable.hidden=true
+                        self.stackTemp.isHidden=false
+                        self.stackTable.isHidden=true
                     }
                     
             }
             
             
         } else {
-            stackTemp.hidden=false
-            stackTable.hidden=true
+            stackTemp.isHidden=false
+            stackTable.isHidden=true
         }
         
         
@@ -246,11 +234,11 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     }
     
   
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.places.count;
         
@@ -258,23 +246,23 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
  
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "SearchTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! SearchTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! SearchTableViewCell
         
         //temphistory[0]
-        let visit = self.places[indexPath.row]!
+        let visit = self.places[(indexPath as NSIndexPath).row]!
      //   print (visit)
         var shopstr = (visit[0] as? String)! + " " + (visit[1] as? String)!
         shopstr = shopstr.trunc(30)
         cell.lblShopName.text = shopstr
         let imgurl =  visit[2] as? String
         //   print(imgurl)
-        let URL = NSURL(string: imgurl!)!
+        let URL = Foundation.URL(string: imgurl!)!
         let placeholderImage = UIImage(named: "badge")!
         
-        cell.imgHistory.af_setImageWithURL(URL, placeholderImage: placeholderImage)
+        cell.imgHistory.af_setImage(withURL: URL, placeholderImage: placeholderImage)
         
         
         
@@ -286,19 +274,21 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         
         self.dismissKeyboard()
        if  segue.identifier == blogSegueIdentifier{
-            let destination = segue.destinationViewController as? PlaceDetailViewController,
-            indexPath = self.tableView.indexPathForSelectedRow?.row
+            let destination = segue.destination as? PlaceDetailViewController,
+            indexPath = (self.tableView.indexPathForSelectedRow as NSIndexPath?)?.row
             let temphistory = self.places
-            
+        
+     //   print(self.places)
             
             //temphistory[0]
             let visit = temphistory[indexPath!]
-            
+        
+      
             //  print((visit["venue_name"] as? String)!)
             destination!.venueName = visit! 
             //  print(indexPath.length)
@@ -315,18 +305,18 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
         let alertController = UIAlertController(
             title: "Location Access Disabled",
             message: "In order to get your current location, please open this app's settings and set location access to 'Always' or 'While Using the App'.",
-            preferredStyle: .Alert)
+            preferredStyle: .alert)
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
         
-        let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-            if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                UIApplication.sharedApplication().openURL(url)
+        let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+            if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.openURL(url)
             }
         }
         alertController.addAction(openAction)
         
-        self.presentViewController(alertController, animated: true, completion: nil)
+        self.present(alertController, animated: true, completion: nil)
     }
 }

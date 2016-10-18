@@ -41,19 +41,19 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
         
              
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
       //  print (venueName)
         //print (address)
         
         txtTo.text = venueName
-        txtMessage.text = address
+        txtMessage.text = venueName + ",\n" + address
      //   blogNameLabel.text = blogName
     }
     
     
     
     
-    @IBAction func btnSend(sender: AnyObject) {
+    @IBAction func btnSend(_ sender: AnyObject) {
         
         
         
@@ -70,10 +70,10 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
             SwiftSpinner.hide()
         })
         Alamofire.request(
-            .POST,
             API_Domain+"/api/messages/suggestion",
+             method: .post,
             parameters: params,
-            encoding: .URL)
+            encoding: URLEncoding.default)
             .validate()
             .responseJSON { (response) -> Void in
                 guard response.result.isSuccess else {
@@ -109,13 +109,13 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
         SwiftSpinner.hide();
         let storyboard = UIStoryboard(name: "User", bundle: nil)
         
-        let rootController = storyboard.instantiateViewControllerWithIdentifier("HomeViewController")
+        let rootController = storyboard.instantiateViewController(withIdentifier: "HomeViewController")
         
         self.navigationController?.pushViewController(rootController, animated: true)
         
     }
     
-    func animateTextField(textView: UITextView, up: Bool) {
+    func animateTextField(_ textView: UITextView, up: Bool) {
         let movementDistance:CGFloat = -110
         let movementDuration: Double = 0.3
         
@@ -129,17 +129,17 @@ class NewMessageController: UITableViewController, UITextViewDelegate {
         UIView.beginAnimations("animateTextField", context: nil)
         UIView.setAnimationBeginsFromCurrentState(true)
         UIView.setAnimationDuration(movementDuration)
-        self.view.frame = CGRectOffset(self.view.frame, 0, movement)
+        self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
         UIView.commitAnimations()
     }
     
     
-    func textViewDidBeginEditing(textView: UITextView) {
+    func textViewDidBeginEditing(_ textView: UITextView) {
          self.animateTextField(textView, up:true)
         
     }
    
-    func textViewDidEndEditing(textView: UITextView) {
+    func textViewDidEndEditing(_ textView: UITextView) {
         self.animateTextField(textView, up:false)
         
     }

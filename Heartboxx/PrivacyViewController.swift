@@ -26,8 +26,8 @@ class PrivacyViewController: UITableViewController {
         
  
     }
-    @IBAction func backgroundChanged(sender: UISwitch) {
-        if (sender.on == true) {
+    @IBAction func backgroundChanged(_ sender: UISwitch) {
+        if (sender.isOn == true) {
             LoginViewController().startBackgroud()
         }else {
             LoginViewController().stopBackgroud()
@@ -46,10 +46,10 @@ class PrivacyViewController: UITableViewController {
         let uid = keychain.get("HB_uid")!
         var status = ""
         Alamofire.request(
-            .GET,
+           
             API_Domain + "/api/users/getbackgroundlocationstatus",
             parameters: ["uid": uid],
-            encoding: .URL)
+            encoding: URLEncoding.default)
             .validate()
             .responseJSON { (response) -> Void in
                 SwiftSpinner.hide()

@@ -16,8 +16,8 @@ class ResetPasswordViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: UIKeyboardWillShowNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: UIKeyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
 
         
     }
@@ -25,7 +25,7 @@ class ResetPasswordViewController: UIViewController {
     
     
     
-    @IBAction func btnSave(sender: AnyObject) {
+    @IBAction func btnSave(_ sender: AnyObject) {
         
         
         var dict = Dictionary<Int, NSMutableArray>()
@@ -45,10 +45,11 @@ class ResetPasswordViewController: UIViewController {
             })
             
             Alamofire.request(
-                .POST,
                 API_Domain + "/api/forgot",
+                method: .post,
+
                 parameters: ["email": txtEmail.text!],
-                encoding: .URL)
+                                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                 //    print(response.result)
@@ -81,9 +82,9 @@ class ResetPasswordViewController: UIViewController {
         
     }
     
-    func keyboardWillShow(notification: NSNotification) {
+    func keyboardWillShow(_ notification: Notification) {
         
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+        if (((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if view.frame.origin.y == 0{
                 self.view.frame.origin.y -= 100
             }
@@ -94,8 +95,8 @@ class ResetPasswordViewController: UIViewController {
         
     }
     
-    func keyboardWillHide(notification: NSNotification) {
-        if ((notification.userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.CGRectValue()) != nil {
+    func keyboardWillHide(_ notification: Notification) {
+        if (((notification as NSNotification).userInfo?[UIKeyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
             if view.frame.origin.y != 0 {
                 self.view.frame.origin.y += 100
             }

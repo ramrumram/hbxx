@@ -17,7 +17,7 @@ class Validator {
    
     
     
-    func validate(validations:Dictionary<Int, NSMutableArray>) -> Bool {
+    func validate(_ validations:Dictionary<Int, NSMutableArray>) -> Bool {
         
         var i = 0;
         var valid = false;
@@ -38,7 +38,7 @@ class Validator {
                 case "not-empty":
                     if(textval == "" || textval == nil) {
                         errobj.text = "Field cannot be empty"
-                        uiobj.layer.borderColor = UIColor.yellowColor().CGColor
+                        uiobj.layer.borderColor = UIColor.yellow.cgColor
                         uiobj.layer.cornerRadius = 5
                         uiobj.layer.borderWidth = 1.0
                         valid = false
@@ -54,9 +54,9 @@ class Validator {
                 case "email":
                     let emailFormat = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
                     let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailFormat)
-                    if(emailPredicate.evaluateWithObject(textval) != true) {
+                    if(emailPredicate.evaluate(with: textval) != true) {
                         errobj.text = "Invalid email"
-                        uiobj.layer.borderColor = UIColor.yellowColor().CGColor
+                        uiobj.layer.borderColor = UIColor.yellow.cgColor
                         uiobj.layer.cornerRadius = 5
                         uiobj.layer.borderWidth = 1.0
                         valid = false

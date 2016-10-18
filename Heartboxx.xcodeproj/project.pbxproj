@@ -10,6 +10,7 @@
 		D700DC6F1CEC860A00EFA2F8 /* PrivacyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700DC6E1CEC860A00EFA2F8 /* PrivacyViewController.swift */; };
 		D700DC711CECC78400EFA2F8 /* WebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700DC701CECC78400EFA2F8 /* WebViewViewController.swift */; };
 		D700DC731CECDB3500EFA2F8 /* TOSTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D700DC721CECDB3500EFA2F8 /* TOSTableViewController.swift */; };
+		D70B05CF1D7AD36000847550 /* SuggestionsAcceptedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D70B05CE1D7AD36000847550 /* SuggestionsAcceptedViewController.swift */; };
 		D722B2AF1CE4B8B50091B700 /* MailboxTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2AE1CE4B8B50091B700 /* MailboxTableViewCell.swift */; };
 		D722B2B11CE4BA330091B700 /* MailboxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2B01CE4BA330091B700 /* MailboxViewController.swift */; };
 		D722B2B51CE4D3150091B700 /* MailboxDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2B41CE4D3150091B700 /* MailboxDetailViewController.swift */; };
@@ -17,21 +18,9 @@
 		D722B2C31CE5E1650091B700 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2C21CE5E1650091B700 /* ChangePasswordViewController.swift */; };
 		D722B2C51CE5E5EF0091B700 /* ResetPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2C41CE5E5EF0091B700 /* ResetPasswordViewController.swift */; };
 		D722B2C71CE5EE400091B700 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D722B2C61CE5EE400091B700 /* SignupViewController.swift */; };
-		D7254CBA1CDE0FCB004FDB4A /* ImagePicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CB91CDE0FCB004FDB4A /* ImagePicker.framework */; };
-		D7254CBD1CDE12FF004FDB4A /* ImagePicker.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CB91CDE0FCB004FDB4A /* ImagePicker.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7254CC41CDE2FDE004FDB4A /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC11CDE2FDE004FDB4A /* AlamofireImage.framework */; };
-		D7254CC51CDE2FDE004FDB4A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC21CDE2FDE004FDB4A /* SwiftyJSON.framework */; };
-		D7254CC61CDE2FE7004FDB4A /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC01CDE2FDE004FDB4A /* Alamofire.framework */; };
-		D7254CC71CDE2FE7004FDB4A /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC01CDE2FDE004FDB4A /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7254CC91CDE2FE7004FDB4A /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC11CDE2FDE004FDB4A /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7254CCB1CDE2FE7004FDB4A /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CC21CDE2FDE004FDB4A /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		D7254CCE1CE088FD004FDB4A /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CCC1CE08895004FDB4A /* KeychainSwift.framework */; };
-		D7254CCF1CE088FD004FDB4A /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CCC1CE08895004FDB4A /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7254CD11CE08A5A004FDB4A /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7254CD01CE08A5A004FDB4A /* LoginViewController.swift */; };
 		D7254CD31CE09945004FDB4A /* User.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7254CD21CE09945004FDB4A /* User.storyboard */; };
 		D7254CD91CE17437004FDB4A /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7254CD81CE17437004FDB4A /* Validator.swift */; };
-		D7254CDE1CE1C15D004FDB4A /* SwiftSpinner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CDD1CE1C15D004FDB4A /* SwiftSpinner.framework */; };
-		D7254CE01CE1C17E004FDB4A /* SwiftSpinner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CDD1CE1C15D004FDB4A /* SwiftSpinner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */; };
 		D77321651CD9CD7200E82088 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D77321641CD9CD7200E82088 /* NewMessageController.swift */; };
 		D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */; };
@@ -45,22 +34,41 @@
 		D7AA4BDD1CE32CB7008E83A2 /* PlaceDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */; };
 		D7D9234B1D34CED700B93096 /* SuggestionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */; };
 		D7E784D31CC9D83D00115E09 /* HistoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */; };
+		D7EFD4C91DB4E8FE0027C490 /* CameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7EFD4C81DB4E8FE0027C490 /* CameraViewController.swift */; };
+		D7EFD4D41DB5281F0027C490 /* KeychainSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CCC1CE08895004FDB4A /* KeychainSwift.framework */; };
+		D7EFD4D61DB5281F0027C490 /* SwiftSpinner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7254CDD1CE1C15D004FDB4A /* SwiftSpinner.framework */; };
+		D7EFD4DA1DB5285A0027C490 /* SwiftValidator.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4B51DB4E7150027C490 /* SwiftValidator.framework */; };
+		D7EFD4E61DB5E8300027C490 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4DE1DB5E8300027C490 /* Alamofire.framework */; };
+		D7EFD4E71DB5E8300027C490 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4DE1DB5E8300027C490 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4E81DB5E8300027C490 /* AlamofireImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4DF1DB5E8300027C490 /* AlamofireImage.framework */; };
+		D7EFD4E91DB5E8300027C490 /* AlamofireImage.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4DF1DB5E8300027C490 /* AlamofireImage.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4EA1DB5E8300027C490 /* CameraManager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E01DB5E8300027C490 /* CameraManager.framework */; };
+		D7EFD4EB1DB5E8300027C490 /* CameraManager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E01DB5E8300027C490 /* CameraManager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4ED1DB5E8300027C490 /* KeychainSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E11DB5E8300027C490 /* KeychainSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4EE1DB5E8300027C490 /* KMPlaceholderTextView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E21DB5E8300027C490 /* KMPlaceholderTextView.framework */; };
+		D7EFD4EF1DB5E8300027C490 /* KMPlaceholderTextView.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E21DB5E8300027C490 /* KMPlaceholderTextView.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4F11DB5E8300027C490 /* SwiftSpinner.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E31DB5E8300027C490 /* SwiftSpinner.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4F31DB5E8300027C490 /* SwiftValidator.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E41DB5E8300027C490 /* SwiftValidator.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		D7EFD4F41DB5E8300027C490 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E51DB5E8300027C490 /* SwiftyJSON.framework */; };
+		D7EFD4F51DB5E8300027C490 /* SwiftyJSON.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = D7EFD4E51DB5E8300027C490 /* SwiftyJSON.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7FA7F381CD23D5C00C1E917 /* Common.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		D77D74A11CCB3DE800C3DDD1 /* Embed Frameworks */ = {
+		D7EFD4F61DB5E8300027C490 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				D7254CCF1CE088FD004FDB4A /* KeychainSwift.framework in Embed Frameworks */,
-				D7254CCB1CDE2FE7004FDB4A /* SwiftyJSON.framework in Embed Frameworks */,
-				D7254CC91CDE2FE7004FDB4A /* AlamofireImage.framework in Embed Frameworks */,
-				D7254CBD1CDE12FF004FDB4A /* ImagePicker.framework in Embed Frameworks */,
-				D7254CE01CE1C17E004FDB4A /* SwiftSpinner.framework in Embed Frameworks */,
-				D7254CC71CDE2FE7004FDB4A /* Alamofire.framework in Embed Frameworks */,
+				D7EFD4F51DB5E8300027C490 /* SwiftyJSON.framework in Embed Frameworks */,
+				D7EFD4ED1DB5E8300027C490 /* KeychainSwift.framework in Embed Frameworks */,
+				D7EFD4EF1DB5E8300027C490 /* KMPlaceholderTextView.framework in Embed Frameworks */,
+				D7EFD4F31DB5E8300027C490 /* SwiftValidator.framework in Embed Frameworks */,
+				D7EFD4E71DB5E8300027C490 /* Alamofire.framework in Embed Frameworks */,
+				D7EFD4EB1DB5E8300027C490 /* CameraManager.framework in Embed Frameworks */,
+				D7EFD4F11DB5E8300027C490 /* SwiftSpinner.framework in Embed Frameworks */,
+				D7EFD4E91DB5E8300027C490 /* AlamofireImage.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +79,7 @@
 		D700DC6E1CEC860A00EFA2F8 /* PrivacyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrivacyViewController.swift; sourceTree = "<group>"; };
 		D700DC701CECC78400EFA2F8 /* WebViewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewViewController.swift; sourceTree = "<group>"; };
 		D700DC721CECDB3500EFA2F8 /* TOSTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TOSTableViewController.swift; sourceTree = "<group>"; };
+		D70B05CE1D7AD36000847550 /* SuggestionsAcceptedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SuggestionsAcceptedViewController.swift; sourceTree = "<group>"; };
 		D722B2AE1CE4B8B50091B700 /* MailboxTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxTableViewCell.swift; sourceTree = "<group>"; };
 		D722B2B01CE4BA330091B700 /* MailboxViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxViewController.swift; sourceTree = "<group>"; };
 		D722B2B41CE4D3150091B700 /* MailboxDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MailboxDetailViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +113,26 @@
 		D7AA4BDC1CE32CB7008E83A2 /* PlaceDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlaceDetailViewController.swift; sourceTree = "<group>"; };
 		D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SuggestionsViewController.swift; path = ../SuggestionsViewController.swift; sourceTree = "<group>"; };
 		D7E784D21CC9D83D00115E09 /* HistoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryTableViewController.swift; sourceTree = "<group>"; };
+		D7EFD4AF1DB4E7150027C490 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D7EFD4B01DB4E7150027C490 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		D7EFD4B11DB4E7150027C490 /* CameraManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CameraManager.framework; path = Carthage/Build/iOS/CameraManager.framework; sourceTree = "<group>"; };
+		D7EFD4B21DB4E7150027C490 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		D7EFD4B31DB4E7150027C490 /* KMPlaceholderTextView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KMPlaceholderTextView.framework; path = Carthage/Build/iOS/KMPlaceholderTextView.framework; sourceTree = "<group>"; };
+		D7EFD4B41DB4E7150027C490 /* SwiftSpinner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSpinner.framework; path = Carthage/Build/iOS/SwiftSpinner.framework; sourceTree = "<group>"; };
+		D7EFD4B51DB4E7150027C490 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
+		D7EFD4B61DB4E7150027C490 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		D7EFD4C81DB4E8FE0027C490 /* CameraViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraViewController.swift; sourceTree = "<group>"; };
+		D7EFD4CB1DB4F1920027C490 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		D7EFD4CE1DB4F2460027C490 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D7EFD4DD1DB5E7F30027C490 /* Heartboxx.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Heartboxx.entitlements; sourceTree = "<group>"; };
+		D7EFD4DE1DB5E8300027C490 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = Carthage/Build/iOS/Alamofire.framework; sourceTree = "<group>"; };
+		D7EFD4DF1DB5E8300027C490 /* AlamofireImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlamofireImage.framework; path = Carthage/Build/iOS/AlamofireImage.framework; sourceTree = "<group>"; };
+		D7EFD4E01DB5E8300027C490 /* CameraManager.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CameraManager.framework; path = Carthage/Build/iOS/CameraManager.framework; sourceTree = "<group>"; };
+		D7EFD4E11DB5E8300027C490 /* KeychainSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KeychainSwift.framework; path = Carthage/Build/iOS/KeychainSwift.framework; sourceTree = "<group>"; };
+		D7EFD4E21DB5E8300027C490 /* KMPlaceholderTextView.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = KMPlaceholderTextView.framework; path = Carthage/Build/iOS/KMPlaceholderTextView.framework; sourceTree = "<group>"; };
+		D7EFD4E31DB5E8300027C490 /* SwiftSpinner.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftSpinner.framework; path = Carthage/Build/iOS/SwiftSpinner.framework; sourceTree = "<group>"; };
+		D7EFD4E41DB5E8300027C490 /* SwiftValidator.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftValidator.framework; path = Carthage/Build/iOS/SwiftValidator.framework; sourceTree = "<group>"; };
+		D7EFD4E51DB5E8300027C490 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		D7FA7F381CD23D5C00C1E917 /* Common.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Common.swift; path = Heartboxx/Common.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,12 +141,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7254CCE1CE088FD004FDB4A /* KeychainSwift.framework in Frameworks */,
-				D7254CC51CDE2FDE004FDB4A /* SwiftyJSON.framework in Frameworks */,
-				D7254CC41CDE2FDE004FDB4A /* AlamofireImage.framework in Frameworks */,
-				D7254CBA1CDE0FCB004FDB4A /* ImagePicker.framework in Frameworks */,
-				D7254CDE1CE1C15D004FDB4A /* SwiftSpinner.framework in Frameworks */,
-				D7254CC61CDE2FE7004FDB4A /* Alamofire.framework in Frameworks */,
+				D7EFD4F41DB5E8300027C490 /* SwiftyJSON.framework in Frameworks */,
+				D7EFD4EE1DB5E8300027C490 /* KMPlaceholderTextView.framework in Frameworks */,
+				D7EFD4E81DB5E8300027C490 /* AlamofireImage.framework in Frameworks */,
+				D7EFD4E61DB5E8300027C490 /* Alamofire.framework in Frameworks */,
+				D7EFD4D41DB5281F0027C490 /* KeychainSwift.framework in Frameworks */,
+				D7EFD4EA1DB5E8300027C490 /* CameraManager.framework in Frameworks */,
+				D7EFD4D61DB5281F0027C490 /* SwiftSpinner.framework in Frameworks */,
+				D7EFD4DA1DB5285A0027C490 /* SwiftValidator.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,6 +167,24 @@
 		D79CF3B81CC8D19C00FA89E6 = {
 			isa = PBXGroup;
 			children = (
+				D7EFD4DE1DB5E8300027C490 /* Alamofire.framework */,
+				D7EFD4DF1DB5E8300027C490 /* AlamofireImage.framework */,
+				D7EFD4E01DB5E8300027C490 /* CameraManager.framework */,
+				D7EFD4E11DB5E8300027C490 /* KeychainSwift.framework */,
+				D7EFD4E21DB5E8300027C490 /* KMPlaceholderTextView.framework */,
+				D7EFD4E31DB5E8300027C490 /* SwiftSpinner.framework */,
+				D7EFD4E41DB5E8300027C490 /* SwiftValidator.framework */,
+				D7EFD4E51DB5E8300027C490 /* SwiftyJSON.framework */,
+				D7EFD4CE1DB4F2460027C490 /* Alamofire.framework */,
+				D7EFD4CB1DB4F1920027C490 /* AlamofireImage.framework */,
+				D7EFD4AF1DB4E7150027C490 /* Alamofire.framework */,
+				D7EFD4B01DB4E7150027C490 /* AlamofireImage.framework */,
+				D7EFD4B11DB4E7150027C490 /* CameraManager.framework */,
+				D7EFD4B21DB4E7150027C490 /* KeychainSwift.framework */,
+				D7EFD4B31DB4E7150027C490 /* KMPlaceholderTextView.framework */,
+				D7EFD4B41DB4E7150027C490 /* SwiftSpinner.framework */,
+				D7EFD4B51DB4E7150027C490 /* SwiftValidator.framework */,
+				D7EFD4B61DB4E7150027C490 /* SwiftyJSON.framework */,
 				D7BCC7E61CCDEEDE00536CA8 /* Resources */,
 				D7E784D61CC9DB2600115E09 /* Includes */,
 				D79CF3C31CC8D19C00FA89E6 /* Heartboxx */,
@@ -154,6 +203,7 @@
 		D79CF3C31CC8D19C00FA89E6 /* Heartboxx */ = {
 			isa = PBXGroup;
 			children = (
+				D7EFD4DD1DB5E7F30027C490 /* Heartboxx.entitlements */,
 				D79CF3C41CC8D19C00FA89E6 /* AppDelegate.swift */,
 				D79CF3D91CC93ADB00FA89E6 /* Classes */,
 				D79CF3D61CC8D20A00FA89E6 /* ViewControllers */,
@@ -180,12 +230,14 @@
 				D722B2C41CE5E5EF0091B700 /* ResetPasswordViewController.swift */,
 				D7AA4BD61CE1E004008E83A2 /* SearchViewController.swift */,
 				D7D9234A1D34CED700B93096 /* SuggestionsViewController.swift */,
+				D70B05CE1D7AD36000847550 /* SuggestionsAcceptedViewController.swift */,
 				D722B2C61CE5EE400091B700 /* SignupViewController.swift */,
 				D700DC6E1CEC860A00EFA2F8 /* PrivacyViewController.swift */,
 				D79CF3C61CC8D19C00FA89E6 /* ViewController.swift */,
 				D75106F21CD86D280093E6C7 /* SettingsTableViewController.swift */,
 				D700DC721CECDB3500EFA2F8 /* TOSTableViewController.swift */,
 				D700DC701CECC78400EFA2F8 /* WebViewViewController.swift */,
+				D7EFD4C81DB4E8FE0027C490 /* CameraViewController.swift */,
 			);
 			name = ViewControllers;
 			sourceTree = "<group>";
@@ -233,7 +285,8 @@
 				D79CF3BD1CC8D19C00FA89E6 /* Sources */,
 				D79CF3BE1CC8D19C00FA89E6 /* Frameworks */,
 				D79CF3BF1CC8D19C00FA89E6 /* Resources */,
-				D77D74A11CCB3DE800C3DDD1 /* Embed Frameworks */,
+				D7EFD4F61DB5E8300027C490 /* Embed Frameworks */,
+				D7EFD4F71DB5F2C60027C490 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -257,12 +310,13 @@
 					D79CF3C01CC8D19C00FA89E6 = {
 						CreatedOnToolsVersion = 7.2.1;
 						DevelopmentTeam = 9G58H587ZP;
+						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -300,6 +354,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		D7EFD4F71DB5F2C60027C490 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "APP_PATH=\"${TARGET_BUILD_DIR}/${WRAPPER_NAME}\"\n\n# This script loops through the frameworks embedded in the application and\n# removes unused architectures.\nfind \"$APP_PATH\" -name '*.framework' -type d | while read -r FRAMEWORK\ndo\nFRAMEWORK_EXECUTABLE_NAME=$(defaults read \"$FRAMEWORK/Info.plist\" CFBundleExecutable)\nFRAMEWORK_EXECUTABLE_PATH=\"$FRAMEWORK/$FRAMEWORK_EXECUTABLE_NAME\"\necho \"Executable is $FRAMEWORK_EXECUTABLE_PATH\"\n\nEXTRACTED_ARCHS=()\n\nfor ARCH in $ARCHS\ndo\necho \"Extracting $ARCH from $FRAMEWORK_EXECUTABLE_NAME\"\nlipo -extract \"$ARCH\" \"$FRAMEWORK_EXECUTABLE_PATH\" -o \"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\"\nEXTRACTED_ARCHS+=(\"$FRAMEWORK_EXECUTABLE_PATH-$ARCH\")\ndone\n\necho \"Merging extracted architectures: ${ARCHS}\"\nlipo -o \"$FRAMEWORK_EXECUTABLE_PATH-merged\" -create \"${EXTRACTED_ARCHS[@]}\"\nrm \"${EXTRACTED_ARCHS[@]}\"\n\necho \"Replacing original executable with thinned version\"\nrm \"$FRAMEWORK_EXECUTABLE_PATH\"\nmv \"$FRAMEWORK_EXECUTABLE_PATH-merged\" \"$FRAMEWORK_EXECUTABLE_PATH\"\n\ndone";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D79CF3BD1CC8D19C00FA89E6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -321,11 +391,13 @@
 				D79CF3DB1CC93B3200FA89E6 /* HistoryTableViewCell.swift in Sources */,
 				D722B2AF1CE4B8B50091B700 /* MailboxTableViewCell.swift in Sources */,
 				D79CF3C71CC8D19C00FA89E6 /* ViewController.swift in Sources */,
+				D7EFD4C91DB4E8FE0027C490 /* CameraViewController.swift in Sources */,
 				D79CF3C51CC8D19C00FA89E6 /* AppDelegate.swift in Sources */,
 				D722B2C51CE5E5EF0091B700 /* ResetPasswordViewController.swift in Sources */,
 				D7FA7F391CD23D5C00C1E917 /* Common.swift in Sources */,
 				D75106F31CD86D280093E6C7 /* SettingsTableViewController.swift in Sources */,
 				D7AA4BD91CE1E14D008E83A2 /* SearchTableViewCell.swift in Sources */,
+				D70B05CF1D7AD36000847550 /* SuggestionsAcceptedViewController.swift in Sources */,
 				D7254CD11CE08A5A004FDB4A /* LoginViewController.swift in Sources */,
 				D722B2B51CE4D3150091B700 /* MailboxDetailViewController.swift in Sources */,
 			);
@@ -440,6 +512,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Heartboxx/Heartboxx.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -452,6 +525,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
@@ -460,6 +534,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Heartboxx/Heartboxx.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -472,6 +547,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.Heartboxx.www;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;

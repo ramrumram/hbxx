@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import ImagePicker
 import Alamofire
 import SwiftSpinner
 import KeychainSwift
 import AlamofireImage
 
 
-class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
-    let imagePickerController = ImagePickerController()
+class SettingsTableViewController: UITableViewController {
 
     let keychain = KeychainSwift()
 
@@ -23,8 +21,11 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
     @IBOutlet var imgProfile: UIImageView!
     
     @IBOutlet var footerView: UIView!
+    
     let imageCache = AutoPurgingImageCache()
 
+    var capturedImage = UIImage()
+    var isCaptured = false
     override func viewDidLoad() {
         
         super.viewDidLoad()
@@ -32,50 +33,64 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(SettingsTableViewController.imageTapped(_:)))
         
         imgProfile.addGestureRecognizer(tapGesture)
-        imgProfile.userInteractionEnabled = true
+        imgProfile.isUserInteractionEnabled = true
         tableView.tableFooterView = footerView
         
         
-        loadAvatar()
+        if(isCaptured) {
+            self.imgProfile.image = capturedImage
+            self.clearImageCache()
+        }else {
+         loadAvatar()
+        }
+//
+
+        
+        
         
          
    
             }
    
     
-    @IBAction func btnLogout(sender: AnyObject) {
+    @IBAction func btnLogout(_ sender: AnyObject) {
         clearImageCache()
         
         keychain.delete("HB_uid")
         keychain.delete("HB_sgcnt")
         
  
-         self.navigationController?.popToRootViewControllerAnimated(true)
+         self.navigationController?.popToRootViewController(animated: true)
     }
 
     func clearImageCache(){
         let uid = keychain.get("HB_uid")!
-        let URL = NSURL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
+        let URL1 = URL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
         
         let imageDownloader = UIImageView.af_sharedImageDownloader
-        let urlRequest = NSURLRequest(URL: URL)
-        imageDownloader.imageCache?.removeImageForRequest(urlRequest, withAdditionalIdentifier: nil)
+        let urlRequest = URLRequest(url: URL1)
+      
+                imageDownloader.imageCache?.removeImage(for: urlRequest, withIdentifier: nil)
     }
     
     func loadAvatar(){
         let uid = keychain.get("HB_uid")!
 
-        let URL = NSURL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
+        let URL1 = URL(string: API_Domain + "/uploads/profiles/"+uid+".jpg")!
        
          
-        imgProfile.af_setImageWithURL(URL)
+        imgProfile.af_setImage(withURL: URL1)
         
         
            }
     
-    func imageTapped(gesture: UIGestureRecognizer) {
+    func imageTapped(_ gesture: UIGestureRecognizer) {
         // if the tapped view is a UIImageView then set it to imageview
         if (gesture.view as? UIImageView) != nil {
+            
+            
+            
+            
             launchCapture()
             //Here you can initiate your new ViewController
             
@@ -84,79 +99,36 @@ class SettingsTableViewController: UITableViewController, ImagePickerDelegate {
     
     func launchCapture() {
         
-        imagePickerController.imageLimit = 1
-        imagePickerController.delegate = self
-        presentViewController(imagePickerController, animated: true, completion: nil)
+     //  presentViewController(imagePickerController, animated: true, completion: nil)
+        
+        
+        let vc: CameraViewController? = self.storyboard?.instantiateViewController(withIdentifier: "CameraView") as? CameraViewController
+        if let validVC: CameraViewController = vc {
+            
+         self.navigationController?.pushViewController(validVC, animated: true)
+            
+        }
+        
 
     }
-    func wrapperDidPress(images: [UIImage]) {
+    func wrapperDidPress(_ images: [UIImage]) {
         // print ("wrap")
     }
     
-    func doneButtonDidPress(images: [UIImage]){
+    func doneButtonDidPress(_ images: [UIImage]){
         
         
-        let image = images[0]
         
-        
-      //  SwiftSpinner.show("Uploading...").addTapHandler({
-      //      SwiftSpinner.hide()
-      //  })
-        let uid = keychain.get("HB_uid")!
-
-        // define parameters
-        let parameters = [
-            "uid": uid,
-            ]
-        
-         UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        // Begin upload
-        Alamofire.upload(.POST, URL_profile_upload,
-                         // define your headers here
-            multipartFormData: { multipartFormData in
-                
-                // import image to request
-                if let imageData = UIImageJPEGRepresentation(image, 0.7) {
-                    multipartFormData.appendBodyPart(data: imageData, name: "file", fileName: "myImage.jpg", mimeType: "image/png")
-                }
-                
-                // import parameters
-                for (key, value) in parameters {
-                    multipartFormData.appendBodyPart(data: value.dataUsingEncoding(NSUTF8StringEncoding)!, name: key)
-                }
-            }, // you can customise Threshold if you wish. This is the alamofire's default value
-            encodingMemoryThreshold: Manager.MultipartFormDataEncodingMemoryThreshold,
-            encodingCompletion: { encodingResult in
-                UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-                switch encodingResult {
-                case .Success(let upload, _, _):
-                 //    SwiftSpinner.hide()
-                    upload.responseJSON { response in
-                        debugPrint("image uploade")
-                        
-                        
-                         self.imgProfile.image = image
-                        self.clearImageCache()
-                        
-                    }
-                case .Failure(let encodingError):
-                    print(encodingError)
-                }
-        })
-        
-        
-        self.dismissViewControllerAnimated(true, completion: {
-            
-        })
+       
         
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
        
         if (segue.identifier == "WebViewSegue") {
             // pass data to next view
-            let wv = segue.destinationViewController as? WebViewViewController
+            let wv = segue.destination as? WebViewViewController
 
             wv!.browserURL =  API_Domain + "/about.php"
         }

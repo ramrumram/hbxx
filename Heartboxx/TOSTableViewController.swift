@@ -27,9 +27,9 @@ class TOSTableViewController: UITableViewController {
 
 
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         
-        let wv = segue.destinationViewController as? WebViewViewController
+        let wv = segue.destination as? WebViewViewController
         
         if (segue.identifier == "AckSegue") {
             // pass data to next view

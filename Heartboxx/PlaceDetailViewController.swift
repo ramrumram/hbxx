@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import Alamofire
 import SwiftyJSON
+import Alamofire
 import AlamofireImage
 import KeychainSwift
 
@@ -32,21 +32,21 @@ class PlaceDetailViewController: UIViewController {
     override func viewDidLoad() {
         lblPlace1.layer.borderWidth = 2.0
         lblPlace1.layer.cornerRadius = 8
-        lblPlace1.layer.borderColor = UIColor(red: 241/255, green: 239/255, blue: 241/255, alpha: 1).CGColor
+        lblPlace1.layer.borderColor = UIColor(red: 241/255, green: 239/255, blue: 241/255, alpha: 1).cgColor
         
-        stackPlace1.hidden = true
-        stackMainImg.hidden = true
+        stackPlace1.isHidden = true
+        stackMainImg.isHidden = true
         
         let keychain = KeychainSwift()
         
         if (keychain.get("HB_sgcnt") != nil) {
             
-            btnSug.setTitle(keychain.get("HB_sgcnt")!, forState: .Normal)
+            btnSug.setTitle(keychain.get("HB_sgcnt")!, for: .normal)
         }
         
         
     }
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
 
         
         
@@ -59,15 +59,20 @@ class PlaceDetailViewController: UIViewController {
         }
         */
         
+        
        let vid = venueName[3] as! String
-       let dateFormatter = NSDateFormatter()
+       let dateFormatter = DateFormatter()
        dateFormatter.dateFormat = "yyyyMMdd"
-       let v = dateFormatter.stringFromDate(NSDate())
+       let v = dateFormatter.string(from: Date())
 
         lblPlace1.text = " " + (venueName[0] as? String)! + " " + (venueName[4] as? String)! + " "
     
         lblPlaceName.text = (venueName[0] as? String)!
-        lblAddress.text = " " + (venueName[4] as? String)! + ", " + (venueName[5] as? String)! + " "
+        
+        let fullAddr : [String] = (venueName[1] as AnyObject).components(separatedBy: ",")
+        
+        lblAddress.text = " " + fullAddr[0] 
+       // lblAddress.text = " " + (venueName[4] as? String)! + ", " + (venueName[5] as? String)! + " "
         
         
        
@@ -81,11 +86,7 @@ class PlaceDetailViewController: UIViewController {
         
         
         
-        Alamofire.request(
-            .GET,
-            iurl,
-            
-            encoding: .URL)
+        Alamofire.request(iurl )
             .validate()
             .responseJSON { (eresponse) -> Void in
                 guard eresponse.result.isSuccess else {
@@ -99,18 +100,18 @@ class PlaceDetailViewController: UIViewController {
                 let photos  = ires["response"]["photos"]
                 var timage = ""
                 if(photos["count"] > 0) {
-                    self.stackPlace1.hidden = false
-                    self.stackMainImg.hidden = false
+                    self.stackPlace1.isHidden = false
+                    self.stackMainImg.isHidden = false
                     
-                    if let sf = photos["items"][0]["suffix"].string, pf = photos["items"][0]["prefix"].string  {
+                    if let sf = photos["items"][0]["suffix"].string, let pf = photos["items"][0]["prefix"].string  {
                         
                         timage =  pf + "400x200" +  sf
                     //    print(i)
                         
                         let imgurl =  timage
-                        //   print(imgurl)
                         let URL = NSURL(string: imgurl)!
-                        self.imgPlace.af_setImageWithURL(URL)
+                        
+                        self.imgPlace.af_setImage(withURL: URL as URL)
                     }
                     
                     
@@ -126,10 +127,10 @@ class PlaceDetailViewController: UIViewController {
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if  segue.identifier == blogSegueIdentifier{
-            let destination = segue.destinationViewController as? NewMessageController
+            let destination = segue.destination as? NewMessageController
             
             destination!.venueName = (venueName[0] as? String)!
             destination!.address = (venueName[1] as? String)!

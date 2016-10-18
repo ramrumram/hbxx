@@ -13,10 +13,9 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+       
         tableView.delegate = self
         tableView.dataSource = self
-        
         
         
         loadMessages()
@@ -26,23 +25,27 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     }
     
     
+    @IBAction func btnRefresh(_ sender: AnyObject) {
+        loadMessages()
+    }
     
     func loadMessages() {
         
         
-            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         
             let uid = keychain.get("HB_uid")!
-            
+        
+     //   print(API_Domain+"/api/messages/fetch/"+uid)
             Alamofire.request(
-                .GET,
+         
                 API_Domain+"/api/messages/fetch/"+uid,
                 
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
-                    UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     guard response.result.isSuccess else {
                         print("Error while fetching remote rooms: \(response.result.error)")
                         //  completion(nil)
@@ -101,11 +104,11 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     }
     
     
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return self.messages.count;
         
@@ -113,12 +116,12 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     
     
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Table view cells are reused and should be dequeued using a cell identifier.
         let cellIdentifier = "MailboxTableViewCell"
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellIdentifier, forIndexPath: indexPath) as! MailboxTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier, for: indexPath) as! MailboxTableViewCell
         
-        let message = self.messages[indexPath.row]!
+        let message = self.messages[(indexPath as NSIndexPath).row]!
      
         cell.lblTo.text =  message[2] as? String
         cell.lblSub.text =  message[0] as? String
@@ -135,11 +138,11 @@ class MailboxViewController: UIViewController,UITableViewDataSource, UITableView
     
     
     // MARK: - Navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if  segue.identifier == blogSegueIdentifier{
-            let destination = segue.destinationViewController as? MailboxDetailViewController,
-            indexPath = self.tableView.indexPathForSelectedRow?.row
+            let destination = segue.destination as? MailboxDetailViewController,
+            indexPath = (self.tableView.indexPathForSelectedRow as NSIndexPath?)?.row
             
             let message = self.messages[indexPath!]
             

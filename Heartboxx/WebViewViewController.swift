@@ -42,7 +42,7 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
         
      
       
-        self.performSelectorOnMainThread(#selector(WebViewViewController.openBrowserView), withObject: nil, waitUntilDone: true)
+        self.performSelector(onMainThread: #selector(WebViewViewController.openBrowserView), with: nil, waitUntilDone: true)
         
         
         // Do any additional setup after loading the view, typically from a nib.
@@ -68,19 +68,19 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
         // viewContainer.bringSubviewToFront(viewLoginForm)
         
         
-        let requestURL = NSURL(string:browserURL)
+        let requestURL = URL(string:browserURL)
         
-        let request = NSMutableURLRequest(URL: requestURL!)
+        let request = NSMutableURLRequest(url: requestURL!)
         
         
-        request.HTTPMethod = "GET"
+        request.httpMethod = "GET"
         
         
         
         
         // if let theWebView = webView{
         /* Load a web page into our web view */
-        self.webView!.loadRequest(request)
+        self.webView!.load(request as URLRequest)
         //  self.webView?.UIDelegate = self
         self.webView!.navigationDelegate = self
         
@@ -91,12 +91,12 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
         
         //------------right  swipe gestures in view--------------//
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(WebViewViewController.rightSwiped))
-        swipeRight.direction = UISwipeGestureRecognizerDirection.Right
+        swipeRight.direction = UISwipeGestureRecognizerDirection.right
         self.view.addGestureRecognizer(swipeRight)
         
         //-----------left swipe gestures in view--------------//
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(WebViewViewController.leftSwiped))
-        swipeLeft.direction = UISwipeGestureRecognizerDirection.Left
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
         self.view.addGestureRecognizer(swipeLeft)
         
     }
@@ -104,14 +104,14 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
     
     
     /* Start the network activity indicator when the web view is loading */
-    func webView(webView: WKWebView,didStartProvisionalNavigation navigation: WKNavigation){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+    func webView(_ webView: WKWebView,didStartProvisionalNavigation navigation: WKNavigation){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
     }
     
     /* Stop the network activity indicator when the loading finishes */
-    func webView(webView: WKWebView,didFinishNavigation navigation: WKNavigation){
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = false
+    func webView(_ webView: WKWebView,didFinish navigation: WKNavigation){
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
         
         
         
@@ -120,7 +120,7 @@ class WebViewViewController: UIViewController, WKNavigationDelegate, WKUIDelegat
     }
  
     
-    func webViewDidStartLoad(webView
+    func webViewDidStartLoad(_ webView
         : UIWebView) {
         
         

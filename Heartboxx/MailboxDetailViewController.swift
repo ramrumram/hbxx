@@ -20,7 +20,7 @@ class MailboxDetailViewController: UITableViewController {
     var body = String()
     var subject = String()
     var date = String()
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //  print (venueName)
         //print (address)
         self.title = to

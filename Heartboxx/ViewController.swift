@@ -24,7 +24,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         self.hideKeyboardWhenTappedAround()
         
         
-        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.Plain, target: navigationController, action: nil)
+        let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
         
         locationManager.allowsBackgroundLocationUpdates = true
@@ -40,7 +40,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         //  print ("sdds")
         // self.navigationItem.setHidesBackButton(false, animated:false);
         
@@ -54,37 +54,37 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     //check the location is authorized..all the funcatioalities shoud go through this
     
-    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         switch status {
-        case .NotDetermined:
+        case .notDetermined:
                   print(".NotDetermined")
             locationManager.requestAlwaysAuthorization()
             break
             
-        case .Authorized:
+        case .authorizedAlways:
                print(".Authorized")
             //locationManager.startMonitoringSignificantLocationChanges()
                 locationManager.startUpdatingLocation()
             
             break
             
-        case .Denied, .Restricted:
+        case .denied, .restricted:
             let alertController = UIAlertController(
                 title: "Background Location Access Disabled",
                 message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
-                preferredStyle: .Alert)
+                preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: nil)
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
             alertController.addAction(cancelAction)
             
-            let openAction = UIAlertAction(title: "Open Settings", style: .Default) { (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
+            let openAction = UIAlertAction(title: "Open Settings", style: .default) { (action) in
+                if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.shared.openURL(url)
                 }
             }
             alertController.addAction(openAction)
             
-            self.presentViewController(alertController, animated: true, completion: nil)
+            self.present(alertController, animated: true, completion: nil)
             
             break
             
@@ -96,16 +96,16 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         // mapView.showsUserLocation = (status == .AuthorizedAlways)
     }
     
-    func locationManager(manager: CLLocationManager, monitoringDidFailForRegion region: CLRegion?, withError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
         print("Monitoring failed for region with identifier: \(region!.identifier)")
     }
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("Location Manager failed with the following error: \(error)")
     }
     
     
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         
         let location = locations.last! as CLLocation

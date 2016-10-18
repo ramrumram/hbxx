@@ -26,7 +26,7 @@ class ChangePasswordViewController: UITableViewController {
     
     
     
-    @IBAction func btnSave(sender: AnyObject) {
+    @IBAction func btnSave(_ sender: AnyObject) {
         
         let uid = keychain.get("HB_uid")!
         
@@ -49,10 +49,11 @@ class ChangePasswordViewController: UITableViewController {
             })
             
             Alamofire.request(
-                .POST,
+                
                 API_Domain + "/api/password",
+                  method: .post,
                 parameters: ["cpassword": txtCpassword.text!, "password": txtPassword.text!, "uid":uid],
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                     guard response.result.isSuccess else {
@@ -65,7 +66,7 @@ class ChangePasswordViewController: UITableViewController {
                     }
                     
                     SwiftSpinner.hide({
-                        self.navigationController?.popViewControllerAnimated(true)
+                        self.navigationController?.popViewController(animated: true)
                     })
                     //let res = JSON(response.result.value!)
                     

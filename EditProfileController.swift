@@ -49,10 +49,8 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
             SwiftSpinner.hide()
         })
         
-        Alamofire.request(
-            .GET,
-            API_Domain + "/api/getuser/"+uid,
-            encoding: .URL)
+        Alamofire.request(            API_Domain + "/api/getuser/"+uid
+          )
             .validate()
             .responseJSON { (response) -> Void in
                 SwiftSpinner.hide()
@@ -95,7 +93,7 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
         
     }
     
-    @IBAction func btnSave(sender: AnyObject) {
+    @IBAction func btnSave(_ sender: AnyObject) {
         
         let uid = keychain.get("HB_uid")!
         
@@ -118,10 +116,10 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
             })
             
             Alamofire.request(
-                .POST,
-                API_Domain + "/api/user",
+                 API_Domain + "/api/user",
+                method: .post,
                 parameters: ["email": txtEmail.text!, "fname": txtFname.text!,"lname": txtLname.text!, "phone": txtPhone.text!,"city": txtCity.text!, "bio":txtBio.text!, "uid":uid],
-                encoding: .URL)
+                encoding: URLEncoding.default)
                 .validate()
                 .responseJSON { (response) -> Void in
                     guard response.result.isSuccess else {
@@ -134,7 +132,7 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
                     }
                     
                     SwiftSpinner.hide({
-                        self.navigationController?.popViewControllerAnimated(true)
+                        self.navigationController?.popViewController(animated: true)
                     })
                     //let res = JSON(response.result.value!)
                     
@@ -153,24 +151,24 @@ class EditProfileController: UITableViewController, UIPickerViewDelegate, UIPick
     
     
     // The number of columns of data
-    func numberOfComponentsInPickerView(pickerView: UIPickerView) -> Int {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
         
         return 1
     }
     
     // The number of rows of data
-    func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         //    print(pickerData.count)
         return pickerData.count
     }
     
     // The data to return for the row and component (column) that's being passed in
-    func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row]
     }
     
     // Catpure the picker view selection
-    func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // print(row)
     }
     
