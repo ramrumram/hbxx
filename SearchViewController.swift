@@ -304,7 +304,7 @@ class SearchViewController: UIViewController, UITableViewDataSource, UITableView
     func promptAccess() {
         let alertController = UIAlertController(
             title: "Location Access Disabled",
-            message: "In order to get your current location, please open this app's settings and set location access to 'Always' or 'While Using the App'.",
+            message: "In order to get your current location, please open this app's settings and set location access to  'While Using the App'.",
             preferredStyle: .alert)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)

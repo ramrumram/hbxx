@@ -37,9 +37,8 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         self.hideKeyboardWhenSingleTappedAround()
         
-        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
   
         
         NotificationCenter.default.addObserver(self, selector: #selector(LoginViewController.keyboardWillShow(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
@@ -73,7 +72,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                 .validate()
                 .responseJSON { (response) -> Void in
                     SwiftSpinner.hide()
-                    print(response)
+                  
                     
                     
                     guard response.result.isSuccess else {
@@ -83,17 +82,11 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
                         return
                     }
                     let res = JSON(response.result.value!)
-                    if let uid = res["uid"].string, let bkstatus = res["background_status"].string, let sgcnt =  res["no_of_sug"].string {
+                    if let uid = res["uid"].string, let sgcnt =  res["no_of_sug"].string {
                         self.keychain.set(uid, forKey: "HB_uid")
                         self.keychain.set(sgcnt, forKey: "HB_sgcnt")
                        
-                        if (bkstatus == "1") {
-                            self.locationManager.startMonitoringSignificantLocationChanges()
-                        }else {
-                            //stop the location update started when the app ran for the first time
-                            self.locationManager.stopMonitoringSignificantLocationChanges()
-                        }
-                        
+                       
                         self.goToHome()
                     }
                     
@@ -121,15 +114,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         
         if (keychain.get("HB_uid") != nil) {
 
-            // just after signing up, need to fire this up,because signficationlocation update has already fired in without any db updates
-            if(keychain.get("HB_monitor_location_once") != nil) {
-
-                let authstate = CLLocationManager.authorizationStatus()
-                if(authstate == CLAuthorizationStatus.authorizedAlways){
-                     keychain.delete("HB_monitor_location_once")
-                    
-                }
-            }
+       
             
             
             let storyboard = UIStoryboard(name: "User", bundle: nil)
@@ -146,13 +131,13 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         switch status {
         case .notDetermined:
             print(".NotDetermined")
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             break
             
         case .authorizedAlways:
             print(".Authorized")
             
-            locationManager.startMonitoringSignificantLocationChanges()
+        //    locationManager.startMonitoringSignificantLocationChanges()
             
           // locationManager.startUpdatingLocation()
             
@@ -160,8 +145,8 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
             
         case .denied, .restricted:
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
+                title: "Location Access Disabled",
+                message: "In order to get your location, please open this app's settings and set location access to 'While Using the App'.",
                 preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -185,14 +170,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error) {
-        print("Monitoring failed for region with identifier: \(region!.identifier)")
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("Location Manager failed with the following error: \(error)")
-    }
-    
+  
     
     func stopBackgroud() {
         
@@ -203,7 +181,7 @@ class LoginViewController: UIViewController,CLLocationManagerDelegate {
     
     func startBackgroud() {
         common.saveBckStatus("1")
-        locationManager.startMonitoringSignificantLocationChanges()
+       // locationManager.startMonitoringSignificantLocationChanges()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

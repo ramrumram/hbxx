@@ -27,10 +27,9 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         let backButton = UIBarButtonItem(title: "", style: UIBarButtonItemStyle.plain, target: navigationController, action: nil)
         navigationItem.leftBarButtonItem = backButton
         
-        locationManager.allowsBackgroundLocationUpdates = true
         locationManager.delegate = self
         
-        locationManager.requestAlwaysAuthorization()
+        locationManager.requestWhenInUseAuthorization()
 
         
         
@@ -58,7 +57,7 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
         switch status {
         case .notDetermined:
                   print(".NotDetermined")
-            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
             break
             
         case .authorizedAlways:
@@ -70,8 +69,8 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
             
         case .denied, .restricted:
             let alertController = UIAlertController(
-                title: "Background Location Access Disabled",
-                message: "In order to be notified about location changes, please open this app's settings and set location access to 'Always'.",
+                title: "Location Access Disabled",
+                 message: "In order to get your current location, please open this app's settings and set location access to 'While Using the App'.",
                 preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -106,13 +105,6 @@ class ViewController: UIViewController,CLLocationManagerDelegate {
     
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        
-        
-        let location = locations.last! as CLLocation
-         print ("sdsd")
-        
-        print(location.coordinate)
-        
         
       //  let tmp = String(location.coordinate)
         
